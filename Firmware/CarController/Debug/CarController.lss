@@ -1,0 +1,3665 @@
+
+CarController.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001304  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000028  00800060  00001304  00001398  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000009f  00800088  00800088  000013c0  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  000013c0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000097  00000000  00000000  00001a8c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00001b23  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000380  00000000  00000000  00001b52  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00004589  00000000  00000000  00001ed2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000139c  00000000  00000000  0000645b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00001117  00000000  00000000  000077f7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000780  00000000  00000000  00008910  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000cfb  00000000  00000000  00009090  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00001362  00000000  00000000  00009d8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000300  00000000  00000000  0000b0ed  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+
+#include "BOOL.h"
+
+// default constructor
+//BOOL::BOOL(uint8_t *_var, uint8_t _bit):var(_var)//,bit(_bit)
+BOOL::BOOL(uint8_t *_var):var(_var)//,bit(_bit)
+       0:	14 c0       	rjmp	.+40     	; 0x2a <__dtors_end>
+       2:	38 c0       	rjmp	.+112    	; 0x74 <__bad_interrupt>
+       4:	37 c0       	rjmp	.+110    	; 0x74 <__bad_interrupt>
+       6:	41 c3       	rjmp	.+1666   	; 0x68a <__vector_3>
+       8:	18 c3       	rjmp	.+1584   	; 0x63a <__vector_4>
+       a:	34 c0       	rjmp	.+104    	; 0x74 <__bad_interrupt>
+       c:	33 c0       	rjmp	.+102    	; 0x74 <__bad_interrupt>
+       e:	32 c0       	rjmp	.+100    	; 0x74 <__bad_interrupt>
+      10:	31 c0       	rjmp	.+98     	; 0x74 <__bad_interrupt>
+      12:	d4 c2       	rjmp	.+1448   	; 0x5bc <__vector_9>
+      14:	2f c0       	rjmp	.+94     	; 0x74 <__bad_interrupt>
+      16:	2e c0       	rjmp	.+92     	; 0x74 <__bad_interrupt>
+      18:	2d c0       	rjmp	.+90     	; 0x74 <__bad_interrupt>
+      1a:	2c c0       	rjmp	.+88     	; 0x74 <__bad_interrupt>
+      1c:	a5 c2       	rjmp	.+1354   	; 0x568 <__vector_14>
+      1e:	2a c0       	rjmp	.+84     	; 0x74 <__bad_interrupt>
+      20:	29 c0       	rjmp	.+82     	; 0x74 <__bad_interrupt>
+      22:	28 c0       	rjmp	.+80     	; 0x74 <__bad_interrupt>
+      24:	27 c0       	rjmp	.+78     	; 0x74 <__bad_interrupt>
+
+00000026 <__ctors_start>:
+      26:	cd 06       	cpc	r12, r29
+
+00000028 <__ctors_end>:
+      28:	d3 06       	cpc	r13, r19
+
+0000002a <__dtors_end>:
+      2a:	11 24       	eor	r1, r1
+      2c:	1f be       	out	0x3f, r1	; 63
+      2e:	cf e5       	ldi	r28, 0x5F	; 95
+      30:	d4 e0       	ldi	r29, 0x04	; 4
+      32:	de bf       	out	0x3e, r29	; 62
+      34:	cd bf       	out	0x3d, r28	; 61
+
+00000036 <__do_copy_data>:
+      36:	10 e0       	ldi	r17, 0x00	; 0
+      38:	a0 e6       	ldi	r26, 0x60	; 96
+      3a:	b0 e0       	ldi	r27, 0x00	; 0
+      3c:	e4 e0       	ldi	r30, 0x04	; 4
+      3e:	f3 e1       	ldi	r31, 0x13	; 19
+      40:	02 c0       	rjmp	.+4      	; 0x46 <__SREG__+0x7>
+      42:	05 90       	lpm	r0, Z+
+      44:	0d 92       	st	X+, r0
+      46:	a8 38       	cpi	r26, 0x88	; 136
+      48:	b1 07       	cpc	r27, r17
+      4a:	d9 f7       	brne	.-10     	; 0x42 <__SREG__+0x3>
+
+0000004c <__do_clear_bss>:
+      4c:	21 e0       	ldi	r18, 0x01	; 1
+      4e:	a8 e8       	ldi	r26, 0x88	; 136
+      50:	b0 e0       	ldi	r27, 0x00	; 0
+      52:	01 c0       	rjmp	.+2      	; 0x56 <.do_clear_bss_start>
+
+00000054 <.do_clear_bss_loop>:
+      54:	1d 92       	st	X+, r1
+
+00000056 <.do_clear_bss_start>:
+      56:	a7 32       	cpi	r26, 0x27	; 39
+      58:	b2 07       	cpc	r27, r18
+      5a:	e1 f7       	brne	.-8      	; 0x54 <.do_clear_bss_loop>
+
+0000005c <__do_global_ctors>:
+      5c:	10 e0       	ldi	r17, 0x00	; 0
+      5e:	c8 e2       	ldi	r28, 0x28	; 40
+      60:	d0 e0       	ldi	r29, 0x00	; 0
+      62:	03 c0       	rjmp	.+6      	; 0x6a <__do_global_ctors+0xe>
+      64:	22 97       	sbiw	r28, 0x02	; 2
+      66:	fe 01       	movw	r30, r28
+      68:	3d d9       	rcall	.-3462   	; 0xfffff2e4 <__eeprom_end+0xff7ef2e4>
+      6a:	c6 32       	cpi	r28, 0x26	; 38
+      6c:	d1 07       	cpc	r29, r17
+      6e:	d1 f7       	brne	.-12     	; 0x64 <__do_global_ctors+0x8>
+      70:	fc d3       	rcall	.+2040   	; 0x86a <main>
+      72:	3c c9       	rjmp	.-3464   	; 0xfffff2ec <__eeprom_end+0xff7ef2ec>
+
+00000074 <__bad_interrupt>:
+      74:	c5 cf       	rjmp	.-118    	; 0x0 <__vectors>
+
+00000076 <_ZN6AnalogC1EPh>:
+
+
+#include "Analog.h"
+
+// default constructor
+Analog::Analog(uint8_t *_rawValue)
+      76:	fc 01       	movw	r30, r24
+{
+	Analog::_rawValue = _rawValue;
+      78:	71 83       	std	Z+1, r23	; 0x01
+      7a:	60 83       	st	Z, r22
+	_minRange = 0;
+      7c:	14 82       	std	Z+4, r1	; 0x04
+	_maxRange = 255;
+      7e:	8f ef       	ldi	r24, 0xFF	; 255
+      80:	83 83       	std	Z+3, r24	; 0x03
+      82:	08 95       	ret
+
+00000084 <_ZN6AnalogD1Ev>:
+} //Analog
+
+// default destructor
+Analog::~Analog()
+      84:	08 95       	ret
+
+00000086 <_ZN6Analog8rawValueEv>:
+} //~Analog
+
+
+uint8_t Analog::rawValue()
+{
+	return *Analog::_rawValue;
+      86:	dc 01       	movw	r26, r24
+      88:	ed 91       	ld	r30, X+
+      8a:	fc 91       	ld	r31, X
+}
+      8c:	80 81       	ld	r24, Z
+      8e:	08 95       	ret
+
+00000090 <_ZN6Analog6UpdateEv>:
+
+void Analog::Update()
+{
+      90:	fc 01       	movw	r30, r24
+	uint16_t tmp1=0, tmp2;
+	if( (*_rawValue) > _minRange ) tmp1 = (*_rawValue) - _minRange;
+      92:	a0 81       	ld	r26, Z
+      94:	b1 81       	ldd	r27, Z+1	; 0x01
+      96:	2c 91       	ld	r18, X
+      98:	44 81       	ldd	r20, Z+4	; 0x04
+      9a:	42 17       	cp	r20, r18
+      9c:	20 f4       	brcc	.+8      	; 0xa6 <_ZN6Analog6UpdateEv+0x16>
+      9e:	30 e0       	ldi	r19, 0x00	; 0
+      a0:	24 1b       	sub	r18, r20
+      a2:	31 09       	sbc	r19, r1
+      a4:	02 c0       	rjmp	.+4      	; 0xaa <_ZN6Analog6UpdateEv+0x1a>
+	return *Analog::_rawValue;
+}
+
+void Analog::Update()
+{
+	uint16_t tmp1=0, tmp2;
+      a6:	20 e0       	ldi	r18, 0x00	; 0
+      a8:	30 e0       	ldi	r19, 0x00	; 0
+	if( (*_rawValue) > _minRange ) tmp1 = (*_rawValue) - _minRange;
+	
+	tmp1 *= 255;
+      aa:	5f ef       	ldi	r21, 0xFF	; 255
+      ac:	52 9f       	mul	r21, r18
+      ae:	c0 01       	movw	r24, r0
+      b0:	53 9f       	mul	r21, r19
+      b2:	90 0d       	add	r25, r0
+      b4:	11 24       	eor	r1, r1
+	tmp2 = _maxRange - _minRange;
+      b6:	63 81       	ldd	r22, Z+3	; 0x03
+      b8:	70 e0       	ldi	r23, 0x00	; 0
+      ba:	64 1b       	sub	r22, r20
+      bc:	71 09       	sbc	r23, r1
+	tmp1 = tmp1/tmp2;
+      be:	90 d8       	rcall	.-3808   	; 0xfffff1e0 <__eeprom_end+0xff7ef1e0>
+	if( tmp1 > 255 ) tmp1 = 255;
+	_value = (uint8_t)tmp1;
+      c0:	26 2f       	mov	r18, r22
+      c2:	37 2f       	mov	r19, r23
+      c4:	2f 3f       	cpi	r18, 0xFF	; 255
+      c6:	31 05       	cpc	r19, r1
+      c8:	19 f0       	breq	.+6      	; 0xd0 <_ZN6Analog6UpdateEv+0x40>
+      ca:	10 f0       	brcs	.+4      	; 0xd0 <_ZN6Analog6UpdateEv+0x40>
+      cc:	2f ef       	ldi	r18, 0xFF	; 255
+      ce:	30 e0       	ldi	r19, 0x00	; 0
+      d0:	22 83       	std	Z+2, r18	; 0x02
+      d2:	08 95       	ret
+
+000000d4 <_ZN6Analog5ValueEv>:
+}
+
+uint8_t Analog::Value()
+{
+	return _value;
+}
+      d4:	fc 01       	movw	r30, r24
+      d6:	82 81       	ldd	r24, Z+2	; 0x02
+      d8:	08 95       	ret
+
+000000da <_ZN6Analog8setRangeEh>:
+	_minRange = minRange;
+	_maxRange = maxRange;
+}
+
+void Analog::setRange(uint8_t maxRange)
+{
+      da:	1f 93       	push	r17
+      dc:	cf 93       	push	r28
+      de:	df 93       	push	r29
+      e0:	ec 01       	movw	r28, r24
+      e2:	16 2f       	mov	r17, r22
+	_minRange = rawValue()+2;
+      e4:	d0 df       	rcall	.-96     	; 0x86 <_ZN6Analog8rawValueEv>
+      e6:	8e 5f       	subi	r24, 0xFE	; 254
+      e8:	8c 83       	std	Y+4, r24	; 0x04
+	int tmpMax = maxRange;
+	tmpMax += (int(_minRange));
+      ea:	90 e0       	ldi	r25, 0x00	; 0
+      ec:	81 0f       	add	r24, r17
+      ee:	91 1d       	adc	r25, r1
+	if( tmpMax > 255 ) _maxRange = 255;
+      f0:	8f 3f       	cpi	r24, 0xFF	; 255
+      f2:	91 05       	cpc	r25, r1
+      f4:	21 f0       	breq	.+8      	; 0xfe <_ZN6Analog8setRangeEh+0x24>
+      f6:	1c f0       	brlt	.+6      	; 0xfe <_ZN6Analog8setRangeEh+0x24>
+      f8:	8f ef       	ldi	r24, 0xFF	; 255
+      fa:	8b 83       	std	Y+3, r24	; 0x03
+      fc:	01 c0       	rjmp	.+2      	; 0x100 <_ZN6Analog8setRangeEh+0x26>
+	else _maxRange = (uint8_t)tmpMax;
+      fe:	8b 83       	std	Y+3, r24	; 0x03
+}
+     100:	df 91       	pop	r29
+     102:	cf 91       	pop	r28
+     104:	1f 91       	pop	r17
+     106:	08 95       	ret
+
+00000108 <_ZN6Analog11getMinRangeEv>:
+
+uint8_t Analog::getMinRange()
+{
+	return _minRange;
+}
+     108:	fc 01       	movw	r30, r24
+     10a:	84 81       	ldd	r24, Z+4	; 0x04
+     10c:	08 95       	ret
+
+0000010e <_ZN6Analog11getMaxRangeEv>:
+
+uint8_t Analog::getMaxRange()
+{
+	return _maxRange;
+     10e:	fc 01       	movw	r30, r24
+     110:	83 81       	ldd	r24, Z+3	; 0x03
+     112:	08 95       	ret
+
+00000114 <_ZN9AnalogExpC1EPhhh>:
+
+#include "AnalogExp.h"
+
+// default constructor
+//AnalogExp::AnalogExp(uint8_t *_rawValue, uint8_t midRange1)
+AnalogExp::AnalogExp(uint8_t *_rawValue, uint8_t midRange1, uint8_t midRange2):Analog(_rawValue)
+     114:	0f 93       	push	r16
+     116:	1f 93       	push	r17
+     118:	cf 93       	push	r28
+     11a:	df 93       	push	r29
+     11c:	ec 01       	movw	r28, r24
+     11e:	04 2f       	mov	r16, r20
+     120:	12 2f       	mov	r17, r18
+     122:	a9 df       	rcall	.-174    	; 0x76 <_ZN6AnalogC1EPh>
+{
+	_midRange1 = midRange1;
+     124:	0d 83       	std	Y+5, r16	; 0x05
+	_midRange2 = midRange2;
+     126:	1e 83       	std	Y+6, r17	; 0x06
+} //AnalogExp
+     128:	df 91       	pop	r29
+     12a:	cf 91       	pop	r28
+     12c:	1f 91       	pop	r17
+     12e:	0f 91       	pop	r16
+     130:	08 95       	ret
+
+00000132 <_ZN9AnalogExp7calcExpEh>:
+
+uint8_t AnalogExp::calcExp(uint8_t value){
+     132:	8f 92       	push	r8
+     134:	9f 92       	push	r9
+     136:	af 92       	push	r10
+     138:	bf 92       	push	r11
+     13a:	df 92       	push	r13
+     13c:	ef 92       	push	r14
+     13e:	ff 92       	push	r15
+     140:	0f 93       	push	r16
+     142:	1f 93       	push	r17
+     144:	cf 93       	push	r28
+     146:	df 93       	push	r29
+     148:	16 2f       	mov	r17, r22
+	int n=0;
+	long m=0;
+	if( value <= _midP1 ){
+     14a:	6b 35       	cpi	r22, 0x5B	; 91
+     14c:	e0 f4       	brcc	.+56     	; 0x186 <_ZN9AnalogExp7calcExpEh+0x54>
+		m = _midRange1;
+     14e:	fc 01       	movw	r30, r24
+     150:	c5 81       	ldd	r28, Z+5	; 0x05
+		m = (m*100)/_midP1;
+     152:	2c 2f       	mov	r18, r28
+     154:	30 e0       	ldi	r19, 0x00	; 0
+     156:	a4 e6       	ldi	r26, 0x64	; 100
+     158:	b0 e0       	ldi	r27, 0x00	; 0
+     15a:	a6 d8       	rcall	.-3764   	; 0xfffff2a8 <__eeprom_end+0xff7ef2a8>
+     15c:	2a e5       	ldi	r18, 0x5A	; 90
+     15e:	30 e0       	ldi	r19, 0x00	; 0
+     160:	40 e0       	ldi	r20, 0x00	; 0
+     162:	50 e0       	ldi	r21, 0x00	; 0
+     164:	86 d8       	rcall	.-3828   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     166:	d2 2e       	mov	r13, r18
+     168:	e3 2e       	mov	r14, r19
+     16a:	f4 2e       	mov	r15, r20
+     16c:	05 2f       	mov	r16, r21
+		n = _midRange1;
+		n = n-((m*_midP1)/100);
+     16e:	d0 e0       	ldi	r29, 0x00	; 0
+     170:	aa e5       	ldi	r26, 0x5A	; 90
+     172:	b0 e0       	ldi	r27, 0x00	; 0
+     174:	ab d8       	rcall	.-3754   	; 0xfffff2cc <__eeprom_end+0xff7ef2cc>
+     176:	24 e6       	ldi	r18, 0x64	; 100
+     178:	30 e0       	ldi	r19, 0x00	; 0
+     17a:	40 e0       	ldi	r20, 0x00	; 0
+     17c:	50 e0       	ldi	r21, 0x00	; 0
+     17e:	79 d8       	rcall	.-3854   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     180:	c2 1b       	sub	r28, r18
+     182:	d3 0b       	sbc	r29, r19
+     184:	49 c0       	rjmp	.+146    	; 0x218 <_ZN9AnalogExp7calcExpEh+0xe6>
+	}
+	else if( value <= _midP2 ){
+     186:	6b 3a       	cpi	r22, 0xAB	; 171
+     188:	20 f5       	brcc	.+72     	; 0x1d2 <_ZN9AnalogExp7calcExpEh+0xa0>
+		m = _midRange2 - _midRange1;
+     18a:	fc 01       	movw	r30, r24
+     18c:	86 80       	ldd	r8, Z+6	; 0x06
+     18e:	a8 2d       	mov	r26, r8
+     190:	b0 e0       	ldi	r27, 0x00	; 0
+     192:	85 81       	ldd	r24, Z+5	; 0x05
+     194:	a8 1b       	sub	r26, r24
+     196:	b1 09       	sbc	r27, r1
+		m = (m*100)/(_midP2-_midP1);
+     198:	24 e6       	ldi	r18, 0x64	; 100
+     19a:	30 e0       	ldi	r19, 0x00	; 0
+     19c:	91 d8       	rcall	.-3806   	; 0xfffff2c0 <__eeprom_end+0xff7ef2c0>
+     19e:	20 e5       	ldi	r18, 0x50	; 80
+     1a0:	30 e0       	ldi	r19, 0x00	; 0
+     1a2:	40 e0       	ldi	r20, 0x00	; 0
+     1a4:	50 e0       	ldi	r21, 0x00	; 0
+     1a6:	65 d8       	rcall	.-3894   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     1a8:	d2 2e       	mov	r13, r18
+     1aa:	e3 2e       	mov	r14, r19
+     1ac:	f4 2e       	mov	r15, r20
+     1ae:	05 2f       	mov	r16, r21
+		long tmpN = _midRange2;
+     1b0:	91 2c       	mov	r9, r1
+     1b2:	a1 2c       	mov	r10, r1
+     1b4:	b1 2c       	mov	r11, r1
+		tmpN = tmpN - ((m*_midP2)/100);
+     1b6:	aa ea       	ldi	r26, 0xAA	; 170
+     1b8:	b0 e0       	ldi	r27, 0x00	; 0
+     1ba:	88 d8       	rcall	.-3824   	; 0xfffff2cc <__eeprom_end+0xff7ef2cc>
+     1bc:	24 e6       	ldi	r18, 0x64	; 100
+     1be:	30 e0       	ldi	r19, 0x00	; 0
+     1c0:	40 e0       	ldi	r20, 0x00	; 0
+     1c2:	50 e0       	ldi	r21, 0x00	; 0
+     1c4:	56 d8       	rcall	.-3924   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     1c6:	82 1a       	sub	r8, r18
+     1c8:	93 0a       	sbc	r9, r19
+     1ca:	a4 0a       	sbc	r10, r20
+     1cc:	b5 0a       	sbc	r11, r21
+		n = (int)tmpN;
+     1ce:	e4 01       	movw	r28, r8
+     1d0:	23 c0       	rjmp	.+70     	; 0x218 <_ZN9AnalogExp7calcExpEh+0xe6>
+	}
+	else {
+		m = 255 - _midRange2;
+     1d2:	fc 01       	movw	r30, r24
+     1d4:	86 81       	ldd	r24, Z+6	; 0x06
+     1d6:	af ef       	ldi	r26, 0xFF	; 255
+     1d8:	b0 e0       	ldi	r27, 0x00	; 0
+     1da:	a8 1b       	sub	r26, r24
+     1dc:	b1 09       	sbc	r27, r1
+		m = (m*100)/(255-_midP2);
+     1de:	24 e6       	ldi	r18, 0x64	; 100
+     1e0:	30 e0       	ldi	r19, 0x00	; 0
+     1e2:	6e d8       	rcall	.-3876   	; 0xfffff2c0 <__eeprom_end+0xff7ef2c0>
+     1e4:	25 e5       	ldi	r18, 0x55	; 85
+     1e6:	30 e0       	ldi	r19, 0x00	; 0
+     1e8:	40 e0       	ldi	r20, 0x00	; 0
+     1ea:	50 e0       	ldi	r21, 0x00	; 0
+     1ec:	42 d8       	rcall	.-3964   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     1ee:	d2 2e       	mov	r13, r18
+     1f0:	e3 2e       	mov	r14, r19
+     1f2:	f4 2e       	mov	r15, r20
+     1f4:	05 2f       	mov	r16, r21
+		long tmpN = 255-((m*255)/100);
+     1f6:	af ef       	ldi	r26, 0xFF	; 255
+     1f8:	b0 e0       	ldi	r27, 0x00	; 0
+     1fa:	68 d8       	rcall	.-3888   	; 0xfffff2cc <__eeprom_end+0xff7ef2cc>
+     1fc:	24 e6       	ldi	r18, 0x64	; 100
+     1fe:	30 e0       	ldi	r19, 0x00	; 0
+     200:	40 e0       	ldi	r20, 0x00	; 0
+     202:	50 e0       	ldi	r21, 0x00	; 0
+     204:	36 d8       	rcall	.-3988   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+     206:	8f ef       	ldi	r24, 0xFF	; 255
+     208:	90 e0       	ldi	r25, 0x00	; 0
+     20a:	a0 e0       	ldi	r26, 0x00	; 0
+     20c:	b0 e0       	ldi	r27, 0x00	; 0
+     20e:	82 1b       	sub	r24, r18
+     210:	93 0b       	sbc	r25, r19
+     212:	a4 0b       	sbc	r26, r20
+     214:	b5 0b       	sbc	r27, r21
+		n = (int)tmpN;
+     216:	ec 01       	movw	r28, r24
+	}
+	
+	long Result = value;
+	Result = ((Result*m)/100) + n;
+     218:	a1 2f       	mov	r26, r17
+     21a:	b0 e0       	ldi	r27, 0x00	; 0
+     21c:	2d 2d       	mov	r18, r13
+     21e:	3e 2d       	mov	r19, r14
+     220:	4f 2d       	mov	r20, r15
+     222:	50 2f       	mov	r21, r16
+     224:	53 d8       	rcall	.-3930   	; 0xfffff2cc <__eeprom_end+0xff7ef2cc>
+     226:	24 e6       	ldi	r18, 0x64	; 100
+     228:	30 e0       	ldi	r19, 0x00	; 0
+     22a:	40 e0       	ldi	r20, 0x00	; 0
+     22c:	50 e0       	ldi	r21, 0x00	; 0
+     22e:	21 d8       	rcall	.-4030   	; 0xfffff272 <__eeprom_end+0xff7ef272>
+	return (uint8_t)Result;
+}
+     230:	8c 2f       	mov	r24, r28
+     232:	82 0f       	add	r24, r18
+     234:	df 91       	pop	r29
+     236:	cf 91       	pop	r28
+     238:	1f 91       	pop	r17
+     23a:	0f 91       	pop	r16
+     23c:	ff 90       	pop	r15
+     23e:	ef 90       	pop	r14
+     240:	df 90       	pop	r13
+     242:	bf 90       	pop	r11
+     244:	af 90       	pop	r10
+     246:	9f 90       	pop	r9
+     248:	8f 90       	pop	r8
+     24a:	08 95       	ret
+
+0000024c <_ZN9AnalogExp6UpdateEv>:
+
+void AnalogExp::Update(){
+     24c:	0f 93       	push	r16
+     24e:	1f 93       	push	r17
+     250:	cf 93       	push	r28
+     252:	df 93       	push	r29
+     254:	ec 01       	movw	r28, r24
+	if( rawValue() > _maxRange) _maxRange = rawValue();
+     256:	08 2f       	mov	r16, r24
+     258:	1d 2f       	mov	r17, r29
+     25a:	9d 2f       	mov	r25, r29
+     25c:	14 df       	rcall	.-472    	; 0x86 <_ZN6Analog8rawValueEv>
+     25e:	9b 81       	ldd	r25, Y+3	; 0x03
+     260:	98 17       	cp	r25, r24
+     262:	20 f4       	brcc	.+8      	; 0x26c <_ZN9AnalogExp6UpdateEv+0x20>
+     264:	8c 2f       	mov	r24, r28
+     266:	9d 2f       	mov	r25, r29
+     268:	0e df       	rcall	.-484    	; 0x86 <_ZN6Analog8rawValueEv>
+     26a:	8b 83       	std	Y+3, r24	; 0x03
+	
+	Analog::Update();
+     26c:	80 2f       	mov	r24, r16
+     26e:	91 2f       	mov	r25, r17
+     270:	0f df       	rcall	.-482    	; 0x90 <_ZN6Analog6UpdateEv>
+	_value = calcExp(_value);
+     272:	6a 81       	ldd	r22, Y+2	; 0x02
+     274:	ce 01       	movw	r24, r28
+     276:	5d df       	rcall	.-326    	; 0x132 <_ZN9AnalogExp7calcExpEh>
+     278:	8a 83       	std	Y+2, r24	; 0x02
+     27a:	df 91       	pop	r29
+     27c:	cf 91       	pop	r28
+     27e:	1f 91       	pop	r17
+     280:	0f 91       	pop	r16
+     282:	08 95       	ret
+
+00000284 <_Z3TF3v>:
+	}
+	//else if( testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) )Functions(0x21);
+	
+}
+// Timer function T3 
+void TF3(){
+     284:	08 95       	ret
+
+00000286 <_Z3TF1v>:
+// Timer Functions
+// Timer function T1 (500ms)
+void TF1(){
+	//--------------------
+	// blink function
+	if( TVblink > 1){
+     286:	80 91 bf 00 	lds	r24, 0x00BF
+     28a:	82 30       	cpi	r24, 0x02	; 2
+     28c:	c0 f1       	brcs	.+112    	; 0x2fe <_Z3TF1v+0x78>
+		if( TVblink < 255) TVblink--;
+     28e:	8f 3f       	cpi	r24, 0xFF	; 255
+     290:	19 f0       	breq	.+6      	; 0x298 <_Z3TF1v+0x12>
+     292:	81 50       	subi	r24, 0x01	; 1
+     294:	80 93 bf 00 	sts	0x00BF, r24
+		if( testbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1) ){
+     298:	80 91 94 00 	lds	r24, 0x0094
+     29c:	80 ff       	sbrs	r24, 0
+     29e:	07 c0       	rjmp	.+14     	; 0x2ae <_Z3TF1v+0x28>
+			DlightRigth.clear();
+     2a0:	8f e0       	ldi	r24, 0x0F	; 15
+     2a2:	91 e0       	ldi	r25, 0x01	; 1
+     2a4:	c5 d5       	rcall	.+2954   	; 0xe30 <_ZN7Digital5clearEv>
+			DlightLeft.toogle();
+     2a6:	87 e1       	ldi	r24, 0x17	; 23
+     2a8:	91 e0       	ldi	r25, 0x01	; 1
+     2aa:	d6 d5       	rcall	.+2988   	; 0xe58 <_ZN7Digital6toogleEv>
+     2ac:	37 c0       	rjmp	.+110    	; 0x31c <_Z3TF1v+0x96>
+		}
+		else if( testbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1) ){
+     2ae:	81 ff       	sbrs	r24, 1
+     2b0:	07 c0       	rjmp	.+14     	; 0x2c0 <_Z3TF1v+0x3a>
+			DlightRigth.toogle();
+     2b2:	8f e0       	ldi	r24, 0x0F	; 15
+     2b4:	91 e0       	ldi	r25, 0x01	; 1
+     2b6:	d0 d5       	rcall	.+2976   	; 0xe58 <_ZN7Digital6toogleEv>
+			DlightLeft.clear();
+     2b8:	87 e1       	ldi	r24, 0x17	; 23
+     2ba:	91 e0       	ldi	r25, 0x01	; 1
+     2bc:	b9 d5       	rcall	.+2930   	; 0xe30 <_ZN7Digital5clearEv>
+     2be:	2e c0       	rjmp	.+92     	; 0x31c <_Z3TF1v+0x96>
+		}
+		else if( testbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1) ){
+     2c0:	82 ff       	sbrs	r24, 2
+     2c2:	0b c0       	rjmp	.+22     	; 0x2da <_Z3TF1v+0x54>
+			DlightRigth.toogle();
+     2c4:	8f e0       	ldi	r24, 0x0F	; 15
+     2c6:	91 e0       	ldi	r25, 0x01	; 1
+     2c8:	c7 d5       	rcall	.+2958   	; 0xe58 <_ZN7Digital6toogleEv>
+			DlightLeft.write(DlightRigth.read());
+     2ca:	8f e0       	ldi	r24, 0x0F	; 15
+     2cc:	91 e0       	ldi	r25, 0x01	; 1
+     2ce:	17 d6       	rcall	.+3118   	; 0xefe <_ZN7Digital4readEv>
+     2d0:	68 2f       	mov	r22, r24
+     2d2:	87 e1       	ldi	r24, 0x17	; 23
+     2d4:	91 e0       	ldi	r25, 0x01	; 1
+     2d6:	ea d5       	rcall	.+3028   	; 0xeac <_ZN7Digital5writeEb>
+     2d8:	21 c0       	rjmp	.+66     	; 0x31c <_Z3TF1v+0x96>
+		}
+		else if( testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ){
+     2da:	84 ff       	sbrs	r24, 4
+     2dc:	1f c0       	rjmp	.+62     	; 0x31c <_Z3TF1v+0x96>
+			DlightRigth.toogle();
+     2de:	8f e0       	ldi	r24, 0x0F	; 15
+     2e0:	91 e0       	ldi	r25, 0x01	; 1
+     2e2:	ba d5       	rcall	.+2932   	; 0xe58 <_ZN7Digital6toogleEv>
+			if(DlightRigth.read()) DlightLeft.clear();
+     2e4:	8f e0       	ldi	r24, 0x0F	; 15
+     2e6:	91 e0       	ldi	r25, 0x01	; 1
+     2e8:	0a d6       	rcall	.+3092   	; 0xefe <_ZN7Digital4readEv>
+     2ea:	88 23       	and	r24, r24
+     2ec:	21 f0       	breq	.+8      	; 0x2f6 <_Z3TF1v+0x70>
+     2ee:	87 e1       	ldi	r24, 0x17	; 23
+     2f0:	91 e0       	ldi	r25, 0x01	; 1
+     2f2:	9e d5       	rcall	.+2876   	; 0xe30 <_ZN7Digital5clearEv>
+     2f4:	13 c0       	rjmp	.+38     	; 0x31c <_Z3TF1v+0x96>
+			else DlightLeft.set();
+     2f6:	87 e1       	ldi	r24, 0x17	; 23
+     2f8:	91 e0       	ldi	r25, 0x01	; 1
+     2fa:	87 d5       	rcall	.+2830   	; 0xe0a <_ZN7Digital3setEv>
+     2fc:	0f c0       	rjmp	.+30     	; 0x31c <_Z3TF1v+0x96>
+		}
+	}
+	else if(TVblink == 1){
+     2fe:	81 30       	cpi	r24, 0x01	; 1
+     300:	69 f4       	brne	.+26     	; 0x31c <_Z3TF1v+0x96>
+		TVblink = 0;
+     302:	10 92 bf 00 	sts	0x00BF, r1
+		DlightRigth.clear();
+     306:	8f e0       	ldi	r24, 0x0F	; 15
+     308:	91 e0       	ldi	r25, 0x01	; 1
+     30a:	92 d5       	rcall	.+2852   	; 0xe30 <_ZN7Digital5clearEv>
+		DlightLeft.clear();
+     30c:	87 e1       	ldi	r24, 0x17	; 23
+     30e:	91 e0       	ldi	r25, 0x01	; 1
+     310:	8f d5       	rcall	.+2846   	; 0xe30 <_ZN7Digital5clearEv>
+		clearbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+		clearbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+		clearbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1);
+     312:	80 91 94 00 	lds	r24, 0x0094
+     316:	88 7f       	andi	r24, 0xF8	; 248
+     318:	80 93 94 00 	sts	0x0094, r24
+	}
+	//--------------------
+	
+	//----------------------
+	// check key Ignition
+	if(keyIgnitionMode < 1) keyIgnitionMode++;
+     31c:	80 91 95 00 	lds	r24, 0x0095
+     320:	90 91 96 00 	lds	r25, 0x0096
+     324:	00 97       	sbiw	r24, 0x00	; 0
+     326:	39 f4       	brne	.+14     	; 0x336 <_Z3TF1v+0xb0>
+     328:	81 e0       	ldi	r24, 0x01	; 1
+     32a:	90 e0       	ldi	r25, 0x00	; 0
+     32c:	90 93 96 00 	sts	0x0096, r25
+     330:	80 93 95 00 	sts	0x0095, r24
+     334:	08 95       	ret
+	else if( keyIgnitionMode == 1 ){
+     336:	01 97       	sbiw	r24, 0x01	; 1
+     338:	a1 f4       	brne	.+40     	; 0x362 <_Z3TF1v+0xdc>
+		if( keyIgnitionP1 ){
+     33a:	80 91 9c 00 	lds	r24, 0x009C
+     33e:	88 23       	and	r24, r24
+     340:	19 f0       	breq	.+6      	; 0x348 <_Z3TF1v+0xc2>
+			//uint8_t value = 255 - AtripotPanel.rawValue();
+			//if(value < 40) ecu.maxSPD = 40;
+			//else 
+				ecu.maxSPD = 120;//AtripotPanel.rawValue();
+     342:	88 e7       	ldi	r24, 0x78	; 120
+     344:	80 93 b8 00 	sts	0x00B8, r24
+		}
+		if( keyIgnitionP2 ){
+     348:	80 91 9b 00 	lds	r24, 0x009B
+     34c:	88 23       	and	r24, r24
+     34e:	19 f0       	breq	.+6      	; 0x356 <_Z3TF1v+0xd0>
+			ecu.maxSPD = 255;
+     350:	8f ef       	ldi	r24, 0xFF	; 255
+     352:	80 93 b8 00 	sts	0x00B8, r24
+		}
+		keyIgnitionMode++;
+     356:	82 e0       	ldi	r24, 0x02	; 2
+     358:	90 e0       	ldi	r25, 0x00	; 0
+     35a:	90 93 96 00 	sts	0x0096, r25
+     35e:	80 93 95 00 	sts	0x0095, r24
+     362:	08 95       	ret
+
+00000364 <_Z41__static_initialization_and_destruction_0ii>:
+			}
+			
+			
+		}
+    }
+     364:	81 30       	cpi	r24, 0x01	; 1
+     366:	91 05       	cpc	r25, r1
+     368:	09 f0       	breq	.+2      	; 0x36c <_Z41__static_initialization_and_destruction_0ii+0x8>
+     36a:	7a c0       	rjmp	.+244    	; 0x460 <__stack+0x1>
+     36c:	6f 3f       	cpi	r22, 0xFF	; 255
+     36e:	7f 4f       	sbci	r23, 0xFF	; 255
+     370:	09 f0       	breq	.+2      	; 0x374 <_Z41__static_initialization_and_destruction_0ii+0x10>
+     372:	ae c0       	rjmp	.+348    	; 0x4d0 <__stack+0x71>
+void TF3();
+//*************************************************
+
+//*************************************************
+// Ports definition
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+     374:	21 e0       	ldi	r18, 0x01	; 1
+     376:	46 e0       	ldi	r20, 0x06	; 6
+     378:	68 e3       	ldi	r22, 0x38	; 56
+     37a:	70 e0       	ldi	r23, 0x00	; 0
+     37c:	8f e1       	ldi	r24, 0x1F	; 31
+     37e:	91 e0       	ldi	r25, 0x01	; 1
+     380:	18 d5       	rcall	.+2608   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+     382:	21 e0       	ldi	r18, 0x01	; 1
+     384:	47 e0       	ldi	r20, 0x07	; 7
+     386:	68 e3       	ldi	r22, 0x38	; 56
+     388:	70 e0       	ldi	r23, 0x00	; 0
+     38a:	87 e1       	ldi	r24, 0x17	; 23
+     38c:	91 e0       	ldi	r25, 0x01	; 1
+     38e:	11 d5       	rcall	.+2594   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+Digital DlightRigth	= Digital(&PORTD, 5, modeOUTPUT);
+     390:	21 e0       	ldi	r18, 0x01	; 1
+     392:	45 e0       	ldi	r20, 0x05	; 5
+     394:	62 e3       	ldi	r22, 0x32	; 50
+     396:	70 e0       	ldi	r23, 0x00	; 0
+     398:	8f e0       	ldi	r24, 0x0F	; 15
+     39a:	91 e0       	ldi	r25, 0x01	; 1
+     39c:	0a d5       	rcall	.+2580   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+Digital Dbuzzer		= Digital(&PORTB, 6, modeOUTPUT);
+     39e:	21 e0       	ldi	r18, 0x01	; 1
+     3a0:	46 e0       	ldi	r20, 0x06	; 6
+     3a2:	68 e3       	ldi	r22, 0x38	; 56
+     3a4:	70 e0       	ldi	r23, 0x00	; 0
+     3a6:	87 e0       	ldi	r24, 0x07	; 7
+     3a8:	91 e0       	ldi	r25, 0x01	; 1
+     3aa:	03 d5       	rcall	.+2566   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+
+Digital MotorR = Digital(&PORTD, 2, modeOUTPUT);				// Motor Rigth 
+     3ac:	21 e0       	ldi	r18, 0x01	; 1
+     3ae:	42 e0       	ldi	r20, 0x02	; 2
+     3b0:	62 e3       	ldi	r22, 0x32	; 50
+     3b2:	70 e0       	ldi	r23, 0x00	; 0
+     3b4:	8f ef       	ldi	r24, 0xFF	; 255
+     3b6:	90 e0       	ldi	r25, 0x00	; 0
+     3b8:	fc d4       	rcall	.+2552   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+Digital MotorL = Digital(&PORTD, 3, modeOUTPUT);				// Motor Left
+     3ba:	21 e0       	ldi	r18, 0x01	; 1
+     3bc:	43 e0       	ldi	r20, 0x03	; 3
+     3be:	62 e3       	ldi	r22, 0x32	; 50
+     3c0:	70 e0       	ldi	r23, 0x00	; 0
+     3c2:	87 ef       	ldi	r24, 0xF7	; 247
+     3c4:	90 e0       	ldi	r25, 0x00	; 0
+     3c6:	f5 d4       	rcall	.+2538   	; 0xdb2 <_ZN7DigitalC1EPVhh4MODE>
+//*************************************************
+
+//*************************************************
+// Analog inputs
+uint8_t ArawValue[8];
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+     3c8:	24 e6       	ldi	r18, 0x64	; 100
+     3ca:	48 e2       	ldi	r20, 0x28	; 40
+     3cc:	6f ee       	ldi	r22, 0xEF	; 239
+     3ce:	70 e0       	ldi	r23, 0x00	; 0
+     3d0:	88 ee       	ldi	r24, 0xE8	; 232
+     3d2:	90 e0       	ldi	r25, 0x00	; 0
+     3d4:	9f de       	rcall	.-706    	; 0x114 <_ZN9AnalogExpC1EPhhh>
+Analog Aleft			= Analog(&ArawValue[1]);
+     3d6:	60 ef       	ldi	r22, 0xF0	; 240
+     3d8:	70 e0       	ldi	r23, 0x00	; 0
+     3da:	83 ee       	ldi	r24, 0xE3	; 227
+     3dc:	90 e0       	ldi	r25, 0x00	; 0
+     3de:	4b de       	rcall	.-874    	; 0x76 <_ZN6AnalogC1EPh>
+Analog Arigth			= Analog(&ArawValue[2]);
+     3e0:	61 ef       	ldi	r22, 0xF1	; 241
+     3e2:	70 e0       	ldi	r23, 0x00	; 0
+     3e4:	8e ed       	ldi	r24, 0xDE	; 222
+     3e6:	90 e0       	ldi	r25, 0x00	; 0
+     3e8:	46 de       	rcall	.-884    	; 0x76 <_ZN6AnalogC1EPh>
+Analog Amiddle			= Analog(&ArawValue[3]);
+     3ea:	62 ef       	ldi	r22, 0xF2	; 242
+     3ec:	70 e0       	ldi	r23, 0x00	; 0
+     3ee:	89 ed       	ldi	r24, 0xD9	; 217
+     3f0:	90 e0       	ldi	r25, 0x00	; 0
+     3f2:	41 de       	rcall	.-894    	; 0x76 <_ZN6AnalogC1EPh>
+Analog AbuttonsPanel	= Analog(&ArawValue[7]);
+     3f4:	66 ef       	ldi	r22, 0xF6	; 246
+     3f6:	70 e0       	ldi	r23, 0x00	; 0
+     3f8:	84 ed       	ldi	r24, 0xD4	; 212
+     3fa:	90 e0       	ldi	r25, 0x00	; 0
+     3fc:	3c de       	rcall	.-904    	; 0x76 <_ZN6AnalogC1EPh>
+Analog AtripotPanel		= Analog(&ArawValue[6]);
+     3fe:	65 ef       	ldi	r22, 0xF5	; 245
+     400:	70 e0       	ldi	r23, 0x00	; 0
+     402:	8f ec       	ldi	r24, 0xCF	; 207
+     404:	90 e0       	ldi	r25, 0x00	; 0
+     406:	37 de       	rcall	.-914    	; 0x76 <_ZN6AnalogC1EPh>
+//*************************************************
+
+//************************************************
+// Timers
+Timer T1 = Timer(TF1, TM_FreeRun);
+     408:	42 e0       	ldi	r20, 0x02	; 2
+     40a:	63 e4       	ldi	r22, 0x43	; 67
+     40c:	71 e0       	ldi	r23, 0x01	; 1
+     40e:	8a ec       	ldi	r24, 0xCA	; 202
+     410:	90 e0       	ldi	r25, 0x00	; 0
+     412:	78 d6       	rcall	.+3312   	; 0x1104 <_ZN5TimerC1EPFvvE5TMODE>
+Timer T2 = Timer(TF2, TM_FreeRun);
+     414:	42 e0       	ldi	r20, 0x02	; 2
+     416:	65 e2       	ldi	r22, 0x25	; 37
+     418:	74 e0       	ldi	r23, 0x04	; 4
+     41a:	85 ec       	ldi	r24, 0xC5	; 197
+     41c:	90 e0       	ldi	r25, 0x00	; 0
+     41e:	72 d6       	rcall	.+3300   	; 0x1104 <_ZN5TimerC1EPFvvE5TMODE>
+Timer T3 = Timer(TF3);
+     420:	62 e4       	ldi	r22, 0x42	; 66
+     422:	71 e0       	ldi	r23, 0x01	; 1
+     424:	80 ec       	ldi	r24, 0xC0	; 192
+     426:	90 e0       	ldi	r25, 0x00	; 0
+     428:	72 d6       	rcall	.+3300   	; 0x110e <_ZN5TimerC1EPFvvE>
+const uint8_t TCblink = 14;			// Timer number of times to blink
+//*************************************************
+
+//************************************************
+// Engine controler
+EngineControlUnit ecu = EngineControlUnit(&MotorR, &MotorL, &OCR2);
+     42a:	23 e4       	ldi	r18, 0x43	; 67
+     42c:	30 e0       	ldi	r19, 0x00	; 0
+     42e:	47 ef       	ldi	r20, 0xF7	; 247
+     430:	50 e0       	ldi	r21, 0x00	; 0
+     432:	6f ef       	ldi	r22, 0xFF	; 255
+     434:	70 e0       	ldi	r23, 0x00	; 0
+     436:	82 eb       	ldi	r24, 0xB2	; 178
+     438:	90 e0       	ldi	r25, 0x00	; 0
+     43a:	6f d5       	rcall	.+2782   	; 0xf1a <_ZN17EngineControlUnitC1EP7DigitalS1_PVh>
+//*************************************************
+
+//************************************************
+// lamp controller
+PWM lamp = PWM(&DlightFront);
+     43c:	6f e1       	ldi	r22, 0x1F	; 31
+     43e:	71 e0       	ldi	r23, 0x01	; 1
+     440:	8e ea       	ldi	r24, 0xAE	; 174
+     442:	90 e0       	ldi	r25, 0x00	; 0
+     444:	18 d6       	rcall	.+3120   	; 0x1076 <_ZN3PWMC1EP7Digital>
+//*************************************************
+
+//************************************************
+// Key Input
+KeyInput keyLeft, keyRigh, keyMiddle, keyButton;
+     446:	8a ea       	ldi	r24, 0xAA	; 170
+     448:	90 e0       	ldi	r25, 0x00	; 0
+     44a:	f3 d5       	rcall	.+3046   	; 0x1032 <_ZN8KeyInputC1Ev>
+     44c:	86 ea       	ldi	r24, 0xA6	; 166
+     44e:	90 e0       	ldi	r25, 0x00	; 0
+     450:	f0 d5       	rcall	.+3040   	; 0x1032 <_ZN8KeyInputC1Ev>
+     452:	82 ea       	ldi	r24, 0xA2	; 162
+     454:	90 e0       	ldi	r25, 0x00	; 0
+     456:	ed d5       	rcall	.+3034   	; 0x1032 <_ZN8KeyInputC1Ev>
+     458:	8e e9       	ldi	r24, 0x9E	; 158
+     45a:	90 e0       	ldi	r25, 0x00	; 0
+     45c:	ea d5       	rcall	.+3028   	; 0x1032 <_ZN8KeyInputC1Ev>
+     45e:	08 95       	ret
+     460:	89 2b       	or	r24, r25
+     462:	b1 f5       	brne	.+108    	; 0x4d0 <__stack+0x71>
+     464:	6f 3f       	cpi	r22, 0xFF	; 255
+     466:	7f 4f       	sbci	r23, 0xFF	; 255
+     468:	99 f5       	brne	.+102    	; 0x4d0 <__stack+0x71>
+EngineControlUnit ecu = EngineControlUnit(&MotorR, &MotorL, &OCR2);
+//*************************************************
+
+//************************************************
+// lamp controller
+PWM lamp = PWM(&DlightFront);
+     46a:	8e ea       	ldi	r24, 0xAE	; 174
+     46c:	90 e0       	ldi	r25, 0x00	; 0
+     46e:	07 d6       	rcall	.+3086   	; 0x107e <_ZN3PWMD1Ev>
+const uint8_t TCblink = 14;			// Timer number of times to blink
+//*************************************************
+
+//************************************************
+// Engine controler
+EngineControlUnit ecu = EngineControlUnit(&MotorR, &MotorL, &OCR2);
+     470:	82 eb       	ldi	r24, 0xB2	; 178
+     472:	90 e0       	ldi	r25, 0x00	; 0
+     474:	5f d5       	rcall	.+2750   	; 0xf34 <_ZN17EngineControlUnitD1Ev>
+
+//************************************************
+// Timers
+Timer T1 = Timer(TF1, TM_FreeRun);
+Timer T2 = Timer(TF2, TM_FreeRun);
+Timer T3 = Timer(TF3);
+     476:	80 ec       	ldi	r24, 0xC0	; 192
+     478:	90 e0       	ldi	r25, 0x00	; 0
+     47a:	4d d6       	rcall	.+3226   	; 0x1116 <_ZN5TimerD1Ev>
+//*************************************************
+
+//************************************************
+// Timers
+Timer T1 = Timer(TF1, TM_FreeRun);
+Timer T2 = Timer(TF2, TM_FreeRun);
+     47c:	85 ec       	ldi	r24, 0xC5	; 197
+     47e:	90 e0       	ldi	r25, 0x00	; 0
+     480:	4a d6       	rcall	.+3220   	; 0x1116 <_ZN5TimerD1Ev>
+Analog AtripotPanel		= Analog(&ArawValue[6]);
+//*************************************************
+
+//************************************************
+// Timers
+Timer T1 = Timer(TF1, TM_FreeRun);
+     482:	8a ec       	ldi	r24, 0xCA	; 202
+     484:	90 e0       	ldi	r25, 0x00	; 0
+     486:	47 d6       	rcall	.+3214   	; 0x1116 <_ZN5TimerD1Ev>
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+Analog Aleft			= Analog(&ArawValue[1]);
+Analog Arigth			= Analog(&ArawValue[2]);
+Analog Amiddle			= Analog(&ArawValue[3]);
+Analog AbuttonsPanel	= Analog(&ArawValue[7]);
+Analog AtripotPanel		= Analog(&ArawValue[6]);
+     488:	8f ec       	ldi	r24, 0xCF	; 207
+     48a:	90 e0       	ldi	r25, 0x00	; 0
+     48c:	fb dd       	rcall	.-1034   	; 0x84 <_ZN6AnalogD1Ev>
+uint8_t ArawValue[8];
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+Analog Aleft			= Analog(&ArawValue[1]);
+Analog Arigth			= Analog(&ArawValue[2]);
+Analog Amiddle			= Analog(&ArawValue[3]);
+Analog AbuttonsPanel	= Analog(&ArawValue[7]);
+     48e:	84 ed       	ldi	r24, 0xD4	; 212
+     490:	90 e0       	ldi	r25, 0x00	; 0
+     492:	f8 dd       	rcall	.-1040   	; 0x84 <_ZN6AnalogD1Ev>
+// Analog inputs
+uint8_t ArawValue[8];
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+Analog Aleft			= Analog(&ArawValue[1]);
+Analog Arigth			= Analog(&ArawValue[2]);
+Analog Amiddle			= Analog(&ArawValue[3]);
+     494:	89 ed       	ldi	r24, 0xD9	; 217
+     496:	90 e0       	ldi	r25, 0x00	; 0
+     498:	f5 dd       	rcall	.-1046   	; 0x84 <_ZN6AnalogD1Ev>
+//*************************************************
+// Analog inputs
+uint8_t ArawValue[8];
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+Analog Aleft			= Analog(&ArawValue[1]);
+Analog Arigth			= Analog(&ArawValue[2]);
+     49a:	8e ed       	ldi	r24, 0xDE	; 222
+     49c:	90 e0       	ldi	r25, 0x00	; 0
+     49e:	f2 dd       	rcall	.-1052   	; 0x84 <_ZN6AnalogD1Ev>
+
+//*************************************************
+// Analog inputs
+uint8_t ArawValue[8];
+AnalogExp Athrottle		= AnalogExp(&ArawValue[0], 40,100);
+Analog Aleft			= Analog(&ArawValue[1]);
+     4a0:	83 ee       	ldi	r24, 0xE3	; 227
+     4a2:	90 e0       	ldi	r25, 0x00	; 0
+     4a4:	ef dd       	rcall	.-1058   	; 0x84 <_ZN6AnalogD1Ev>
+#define __ANALOGEXP_H__
+
+#include "avr/io.h"
+#include "Analog.h"
+
+class AnalogExp : public Analog
+     4a6:	88 ee       	ldi	r24, 0xE8	; 232
+     4a8:	90 e0       	ldi	r25, 0x00	; 0
+     4aa:	ec dd       	rcall	.-1064   	; 0x84 <_ZN6AnalogD1Ev>
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+Digital DlightRigth	= Digital(&PORTD, 5, modeOUTPUT);
+Digital Dbuzzer		= Digital(&PORTB, 6, modeOUTPUT);
+
+Digital MotorR = Digital(&PORTD, 2, modeOUTPUT);				// Motor Rigth 
+Digital MotorL = Digital(&PORTD, 3, modeOUTPUT);				// Motor Left
+     4ac:	87 ef       	ldi	r24, 0xF7	; 247
+     4ae:	90 e0       	ldi	r25, 0x00	; 0
+     4b0:	33 d5       	rcall	.+2662   	; 0xf18 <_ZN7DigitalD1Ev>
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+Digital DlightRigth	= Digital(&PORTD, 5, modeOUTPUT);
+Digital Dbuzzer		= Digital(&PORTB, 6, modeOUTPUT);
+
+Digital MotorR = Digital(&PORTD, 2, modeOUTPUT);				// Motor Rigth 
+     4b2:	8f ef       	ldi	r24, 0xFF	; 255
+     4b4:	90 e0       	ldi	r25, 0x00	; 0
+     4b6:	30 d5       	rcall	.+2656   	; 0xf18 <_ZN7DigitalD1Ev>
+//*************************************************
+// Ports definition
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+Digital DlightRigth	= Digital(&PORTD, 5, modeOUTPUT);
+Digital Dbuzzer		= Digital(&PORTB, 6, modeOUTPUT);
+     4b8:	87 e0       	ldi	r24, 0x07	; 7
+     4ba:	91 e0       	ldi	r25, 0x01	; 1
+     4bc:	2d d5       	rcall	.+2650   	; 0xf18 <_ZN7DigitalD1Ev>
+
+//*************************************************
+// Ports definition
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+Digital DlightRigth	= Digital(&PORTD, 5, modeOUTPUT);
+     4be:	8f e0       	ldi	r24, 0x0F	; 15
+     4c0:	91 e0       	ldi	r25, 0x01	; 1
+     4c2:	2a d5       	rcall	.+2644   	; 0xf18 <_ZN7DigitalD1Ev>
+//*************************************************
+
+//*************************************************
+// Ports definition
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+Digital DlightLeft	= Digital(&PORTB, 7, modeOUTPUT);
+     4c4:	87 e1       	ldi	r24, 0x17	; 23
+     4c6:	91 e0       	ldi	r25, 0x01	; 1
+     4c8:	27 d5       	rcall	.+2638   	; 0xf18 <_ZN7DigitalD1Ev>
+void TF3();
+//*************************************************
+
+//*************************************************
+// Ports definition
+Digital DlightFront	= Digital(&PORTB, 6, modeOUTPUT);
+     4ca:	8f e1       	ldi	r24, 0x1F	; 31
+     4cc:	91 e0       	ldi	r25, 0x01	; 1
+     4ce:	24 d5       	rcall	.+2632   	; 0xf18 <_ZN7DigitalD1Ev>
+     4d0:	08 95       	ret
+
+000004d2 <_Z8IntToStri>:
+bool report1;
+//*************************************************
+
+
+char txt[10];
+char* IntToStr( int readValue ){
+     4d2:	1f 93       	push	r17
+     4d4:	cf 93       	push	r28
+     4d6:	df 93       	push	r29
+     4d8:	9c 01       	movw	r18, r24
+	int txtindex = 0;
+	
+	if( readValue/10000)
+     4da:	81 5f       	subi	r24, 0xF1	; 241
+     4dc:	98 4d       	sbci	r25, 0xD8	; 216
+     4de:	8f 31       	cpi	r24, 0x1F	; 31
+     4e0:	9e 44       	sbci	r25, 0x4E	; 78
+     4e2:	50 f0       	brcs	.+20     	; 0x4f8 <_Z8IntToStri+0x26>
+		txt[txtindex++] = (readValue/10000)+0x30; readValue = readValue%10000;
+     4e4:	c9 01       	movw	r24, r18
+     4e6:	60 e1       	ldi	r22, 0x10	; 16
+     4e8:	77 e2       	ldi	r23, 0x27	; 39
+     4ea:	8e d6       	rcall	.+3356   	; 0x1208 <__divmodhi4>
+     4ec:	60 5d       	subi	r22, 0xD0	; 208
+     4ee:	60 93 89 00 	sts	0x0089, r22
+     4f2:	e1 e0       	ldi	r30, 0x01	; 1
+     4f4:	f0 e0       	ldi	r31, 0x00	; 0
+     4f6:	02 c0       	rjmp	.+4      	; 0x4fc <_Z8IntToStri+0x2a>
+//*************************************************
+
+
+char txt[10];
+char* IntToStr( int readValue ){
+	int txtindex = 0;
+     4f8:	e0 e0       	ldi	r30, 0x00	; 0
+     4fa:	f0 e0       	ldi	r31, 0x00	; 0
+	
+	if( readValue/10000)
+		txt[txtindex++] = (readValue/10000)+0x30; readValue = readValue%10000;
+     4fc:	c9 01       	movw	r24, r18
+     4fe:	60 e1       	ldi	r22, 0x10	; 16
+     500:	77 e2       	ldi	r23, 0x27	; 39
+     502:	82 d6       	rcall	.+3332   	; 0x1208 <__divmodhi4>
+     504:	18 2f       	mov	r17, r24
+     506:	49 2f       	mov	r20, r25
+	if( readValue/1000)
+     508:	9c 01       	movw	r18, r24
+     50a:	29 51       	subi	r18, 0x19	; 25
+     50c:	3c 4f       	sbci	r19, 0xFC	; 252
+     50e:	2f 3c       	cpi	r18, 0xCF	; 207
+     510:	37 40       	sbci	r19, 0x07	; 7
+     512:	50 f0       	brcs	.+20     	; 0x528 <_Z8IntToStri+0x56>
+		txt[txtindex++] = (readValue/1000)+0x30; readValue = readValue%1000;
+     514:	ef 01       	movw	r28, r30
+     516:	c7 57       	subi	r28, 0x77	; 119
+     518:	df 4f       	sbci	r29, 0xFF	; 255
+     51a:	81 2f       	mov	r24, r17
+     51c:	68 ee       	ldi	r22, 0xE8	; 232
+     51e:	73 e0       	ldi	r23, 0x03	; 3
+     520:	73 d6       	rcall	.+3302   	; 0x1208 <__divmodhi4>
+     522:	60 5d       	subi	r22, 0xD0	; 208
+     524:	68 83       	st	Y, r22
+     526:	31 96       	adiw	r30, 0x01	; 1
+     528:	81 2f       	mov	r24, r17
+     52a:	94 2f       	mov	r25, r20
+     52c:	68 ee       	ldi	r22, 0xE8	; 232
+     52e:	73 e0       	ldi	r23, 0x03	; 3
+     530:	6b d6       	rcall	.+3286   	; 0x1208 <__divmodhi4>
+	//if( readValue/100)
+	txt[txtindex++] = (readValue/100)+0x30; readValue = readValue%100;
+     532:	e7 57       	subi	r30, 0x77	; 119
+     534:	ff 4f       	sbci	r31, 0xFF	; 255
+     536:	64 e6       	ldi	r22, 0x64	; 100
+     538:	70 e0       	ldi	r23, 0x00	; 0
+     53a:	66 d6       	rcall	.+3276   	; 0x1208 <__divmodhi4>
+     53c:	60 5d       	subi	r22, 0xD0	; 208
+     53e:	60 83       	st	Z, r22
+	txt[txtindex++] = (readValue/10)+0x30;
+     540:	6a e0       	ldi	r22, 0x0A	; 10
+     542:	70 e0       	ldi	r23, 0x00	; 0
+     544:	61 d6       	rcall	.+3266   	; 0x1208 <__divmodhi4>
+     546:	60 5d       	subi	r22, 0xD0	; 208
+     548:	61 83       	std	Z+1, r22	; 0x01
+	txt[txtindex++] = (readValue%10)+0x30;
+     54a:	80 5d       	subi	r24, 0xD0	; 208
+     54c:	82 83       	std	Z+2, r24	; 0x02
+	//txt[txtindex++] = '\n';
+	txt[txtindex] = 0;
+     54e:	13 82       	std	Z+3, r1	; 0x03
+	
+	return txt;
+}
+     550:	89 e8       	ldi	r24, 0x89	; 137
+     552:	90 e0       	ldi	r25, 0x00	; 0
+     554:	df 91       	pop	r29
+     556:	cf 91       	pop	r28
+     558:	1f 91       	pop	r17
+     55a:	08 95       	ret
+
+0000055c <_Z16InitADCInterruptv>:
+
+//##__BEGIN__############################################################
+///////////////////////////////////////
+// Initialization of ADC Interrupt
+void InitADCInterrupt(){
+	ADMUX  = 0x60;
+     55c:	80 e6       	ldi	r24, 0x60	; 96
+     55e:	87 b9       	out	0x07, r24	; 7
+	ADCSRA = 0x8E;
+     560:	8e e8       	ldi	r24, 0x8E	; 142
+     562:	86 b9       	out	0x06, r24	; 6
+	setbit(ADCSRA, 6);
+     564:	36 9a       	sbi	0x06, 6	; 6
+     566:	08 95       	ret
+
+00000568 <__vector_14>:
+}
+/////////////////////////////////////////
+// ADC Interrupt routine
+ISR( ADC_vect ){
+     568:	1f 92       	push	r1
+     56a:	0f 92       	push	r0
+     56c:	0f b6       	in	r0, 0x3f	; 63
+     56e:	0f 92       	push	r0
+     570:	11 24       	eor	r1, r1
+     572:	8f 93       	push	r24
+     574:	ef 93       	push	r30
+     576:	ff 93       	push	r31
+	ArawValue[ADMUX&0x0F] = ADCH;
+     578:	e7 b1       	in	r30, 0x07	; 7
+     57a:	85 b1       	in	r24, 0x05	; 5
+     57c:	ef 70       	andi	r30, 0x0F	; 15
+     57e:	f0 e0       	ldi	r31, 0x00	; 0
+     580:	e1 51       	subi	r30, 0x11	; 17
+     582:	ff 4f       	sbci	r31, 0xFF	; 255
+     584:	80 83       	st	Z, r24
+}
+     586:	ff 91       	pop	r31
+     588:	ef 91       	pop	r30
+     58a:	8f 91       	pop	r24
+     58c:	0f 90       	pop	r0
+     58e:	0f be       	out	0x3f, r0	; 63
+     590:	0f 90       	pop	r0
+     592:	1f 90       	pop	r1
+     594:	18 95       	reti
+
+00000596 <_Z10ADC_updatev>:
+////////////////////////////////////////
+// ADC update
+void ADC_update(){
+	if( !testbit(ADCSRA, 6) ){
+     596:	36 99       	sbic	0x06, 6	; 6
+     598:	0a c0       	rjmp	.+20     	; 0x5ae <_Z10ADC_updatev+0x18>
+		if(ADMUX == 0x67) ADMUX = 0x60;
+     59a:	87 b1       	in	r24, 0x07	; 7
+     59c:	87 36       	cpi	r24, 0x67	; 103
+     59e:	19 f4       	brne	.+6      	; 0x5a6 <_Z10ADC_updatev+0x10>
+     5a0:	80 e6       	ldi	r24, 0x60	; 96
+     5a2:	87 b9       	out	0x07, r24	; 7
+     5a4:	03 c0       	rjmp	.+6      	; 0x5ac <_Z10ADC_updatev+0x16>
+		else ADMUX++;
+     5a6:	87 b1       	in	r24, 0x07	; 7
+     5a8:	8f 5f       	subi	r24, 0xFF	; 255
+     5aa:	87 b9       	out	0x07, r24	; 7
+		setbit(ADCSRA, 6);
+     5ac:	36 9a       	sbi	0x06, 6	; 6
+     5ae:	08 95       	ret
+
+000005b0 <_Z18InitTimeInterrupt0v>:
+//##__BEGIN__############################################################
+uint8_t timer=20, _timer;
+///////////////////////////////////////
+// Initialization of Time Interrupt
+void InitTimeInterrupt0(){
+	TCCR0	= 0x05;									// Setup Timer with prescaller 1024
+     5b0:	85 e0       	ldi	r24, 0x05	; 5
+     5b2:	83 bf       	out	0x33, r24	; 51
+	setbit(TIMSK,0);								// Overflow interrupt enable
+     5b4:	89 b7       	in	r24, 0x39	; 57
+     5b6:	81 60       	ori	r24, 0x01	; 1
+     5b8:	89 bf       	out	0x39, r24	; 57
+     5ba:	08 95       	ret
+
+000005bc <__vector_9>:
+}
+/////////////////////////////////////////
+// Interrupt routine timer ( each 32.7ms )
+ISR( TIMER0_OVF_vect){
+     5bc:	1f 92       	push	r1
+     5be:	0f 92       	push	r0
+     5c0:	0f b6       	in	r0, 0x3f	; 63
+     5c2:	0f 92       	push	r0
+     5c4:	11 24       	eor	r1, r1
+     5c6:	2f 93       	push	r18
+     5c8:	3f 93       	push	r19
+     5ca:	4f 93       	push	r20
+     5cc:	5f 93       	push	r21
+     5ce:	6f 93       	push	r22
+     5d0:	7f 93       	push	r23
+     5d2:	8f 93       	push	r24
+     5d4:	9f 93       	push	r25
+     5d6:	af 93       	push	r26
+     5d8:	bf 93       	push	r27
+     5da:	ef 93       	push	r30
+     5dc:	ff 93       	push	r31
+	if(_timer==1){
+     5de:	80 91 88 00 	lds	r24, 0x0088
+     5e2:	81 30       	cpi	r24, 0x01	; 1
+     5e4:	29 f4       	brne	.+10     	; 0x5f0 <__vector_9+0x34>
+		_timer = timer;
+     5e6:	80 91 60 00 	lds	r24, 0x0060
+     5ea:	80 93 88 00 	sts	0x0088, r24
+     5ee:	05 c0       	rjmp	.+10     	; 0x5fa <__vector_9+0x3e>
+	}
+	else if( _timer > 1 )
+     5f0:	82 30       	cpi	r24, 0x02	; 2
+     5f2:	18 f0       	brcs	.+6      	; 0x5fa <__vector_9+0x3e>
+	_timer--;
+     5f4:	81 50       	subi	r24, 0x01	; 1
+     5f6:	80 93 88 00 	sts	0x0088, r24
+
+	T1.timer();	
+     5fa:	8a ec       	ldi	r24, 0xCA	; 202
+     5fc:	90 e0       	ldi	r25, 0x00	; 0
+     5fe:	8f d5       	rcall	.+2846   	; 0x111e <_ZN5Timer5timerEv>
+	T2.timer();
+     600:	85 ec       	ldi	r24, 0xC5	; 197
+     602:	90 e0       	ldi	r25, 0x00	; 0
+     604:	8c d5       	rcall	.+2840   	; 0x111e <_ZN5Timer5timerEv>
+	//T3.timer();
+}
+     606:	ff 91       	pop	r31
+     608:	ef 91       	pop	r30
+     60a:	bf 91       	pop	r27
+     60c:	af 91       	pop	r26
+     60e:	9f 91       	pop	r25
+     610:	8f 91       	pop	r24
+     612:	7f 91       	pop	r23
+     614:	6f 91       	pop	r22
+     616:	5f 91       	pop	r21
+     618:	4f 91       	pop	r20
+     61a:	3f 91       	pop	r19
+     61c:	2f 91       	pop	r18
+     61e:	0f 90       	pop	r0
+     620:	0f be       	out	0x3f, r0	; 63
+     622:	0f 90       	pop	r0
+     624:	1f 90       	pop	r1
+     626:	18 95       	reti
+
+00000628 <_Z18InitTimeInterrupt2v>:
+
+//##__BEGIN__ ############################################################
+///////////////////////////////////////
+// Initialization of Interrupt
+void InitTimeInterrupt2(){
+	TCCR2	= 0x04;									// phase correct pwm | 64_prescaller
+     628:	84 e0       	ldi	r24, 0x04	; 4
+     62a:	85 bd       	out	0x25, r24	; 37
+	setbit(TIMSK,6);								// TOIE2 Overflow interrupt enable
+     62c:	89 b7       	in	r24, 0x39	; 57
+     62e:	80 64       	ori	r24, 0x40	; 64
+     630:	89 bf       	out	0x39, r24	; 57
+	setbit(TIMSK,7);								// OCIE2 Coparator interrupt enable
+     632:	89 b7       	in	r24, 0x39	; 57
+     634:	80 68       	ori	r24, 0x80	; 128
+     636:	89 bf       	out	0x39, r24	; 57
+     638:	08 95       	ret
+
+0000063a <__vector_4>:
+}
+/////////////////////////////////////////
+// Interrupt routine PWM_overflow ( each 2ms )
+ISR(TIMER2_OVF_vect){
+     63a:	1f 92       	push	r1
+     63c:	0f 92       	push	r0
+     63e:	0f b6       	in	r0, 0x3f	; 63
+     640:	0f 92       	push	r0
+     642:	11 24       	eor	r1, r1
+     644:	2f 93       	push	r18
+     646:	3f 93       	push	r19
+     648:	4f 93       	push	r20
+     64a:	5f 93       	push	r21
+     64c:	6f 93       	push	r22
+     64e:	7f 93       	push	r23
+     650:	8f 93       	push	r24
+     652:	9f 93       	push	r25
+     654:	af 93       	push	r26
+     656:	bf 93       	push	r27
+     658:	ef 93       	push	r30
+     65a:	ff 93       	push	r31
+	ecu.InterruptOVF();
+     65c:	82 eb       	ldi	r24, 0xB2	; 178
+     65e:	90 e0       	ldi	r25, 0x00	; 0
+     660:	6a d4       	rcall	.+2260   	; 0xf36 <_ZN17EngineControlUnit12InterruptOVFEv>
+	lamp.interrupt();
+     662:	8e ea       	ldi	r24, 0xAE	; 174
+     664:	90 e0       	ldi	r25, 0x00	; 0
+     666:	21 d5       	rcall	.+2626   	; 0x10aa <_ZN3PWM9interruptEv>
+}
+     668:	ff 91       	pop	r31
+     66a:	ef 91       	pop	r30
+     66c:	bf 91       	pop	r27
+     66e:	af 91       	pop	r26
+     670:	9f 91       	pop	r25
+     672:	8f 91       	pop	r24
+     674:	7f 91       	pop	r23
+     676:	6f 91       	pop	r22
+     678:	5f 91       	pop	r21
+     67a:	4f 91       	pop	r20
+     67c:	3f 91       	pop	r19
+     67e:	2f 91       	pop	r18
+     680:	0f 90       	pop	r0
+     682:	0f be       	out	0x3f, r0	; 63
+     684:	0f 90       	pop	r0
+     686:	1f 90       	pop	r1
+     688:	18 95       	reti
+
+0000068a <__vector_3>:
+/////////////////////////////////////////
+// Interrupt routine PWM ( max 2ms )
+ISR( TIMER2_COMP_vect){
+     68a:	1f 92       	push	r1
+     68c:	0f 92       	push	r0
+     68e:	0f b6       	in	r0, 0x3f	; 63
+     690:	0f 92       	push	r0
+     692:	11 24       	eor	r1, r1
+     694:	2f 93       	push	r18
+     696:	3f 93       	push	r19
+     698:	4f 93       	push	r20
+     69a:	5f 93       	push	r21
+     69c:	6f 93       	push	r22
+     69e:	7f 93       	push	r23
+     6a0:	8f 93       	push	r24
+     6a2:	9f 93       	push	r25
+     6a4:	af 93       	push	r26
+     6a6:	bf 93       	push	r27
+     6a8:	ef 93       	push	r30
+     6aa:	ff 93       	push	r31
+	ecu.InterruptCOMP();
+     6ac:	82 eb       	ldi	r24, 0xB2	; 178
+     6ae:	90 e0       	ldi	r25, 0x00	; 0
+     6b0:	8a d4       	rcall	.+2324   	; 0xfc6 <_ZN17EngineControlUnit13InterruptCOMPEv>
+}
+     6b2:	ff 91       	pop	r31
+     6b4:	ef 91       	pop	r30
+     6b6:	bf 91       	pop	r27
+     6b8:	af 91       	pop	r26
+     6ba:	9f 91       	pop	r25
+     6bc:	8f 91       	pop	r24
+     6be:	7f 91       	pop	r23
+     6c0:	6f 91       	pop	r22
+     6c2:	5f 91       	pop	r21
+     6c4:	4f 91       	pop	r20
+     6c6:	3f 91       	pop	r19
+     6c8:	2f 91       	pop	r18
+     6ca:	0f 90       	pop	r0
+     6cc:	0f be       	out	0x3f, r0	; 63
+     6ce:	0f 90       	pop	r0
+     6d0:	1f 90       	pop	r1
+     6d2:	18 95       	reti
+
+000006d4 <_Z10funcReportv>:
+}
+//////////////////////////////////////////////////////////////
+
+
+void funcReport(){
+	UART_Print(IntToStr(ArawValue[0])); UART_Print("\t");
+     6d4:	80 91 ef 00 	lds	r24, 0x00EF
+     6d8:	90 e0       	ldi	r25, 0x00	; 0
+     6da:	fb de       	rcall	.-522    	; 0x4d2 <_Z8IntToStri>
+     6dc:	68 d5       	rcall	.+2768   	; 0x11ae <_Z10UART_PrintPKc>
+     6de:	81 e6       	ldi	r24, 0x61	; 97
+     6e0:	90 e0       	ldi	r25, 0x00	; 0
+     6e2:	65 d5       	rcall	.+2762   	; 0x11ae <_Z10UART_PrintPKc>
+	//UART_Print(IntToStr(ArawValue[1])); UART_Print("\t");
+	UART_Print(IntToStr(Aleft.Value())); UART_Print("\t");
+     6e4:	83 ee       	ldi	r24, 0xE3	; 227
+     6e6:	90 e0       	ldi	r25, 0x00	; 0
+     6e8:	f5 dc       	rcall	.-1558   	; 0xd4 <_ZN6Analog5ValueEv>
+     6ea:	90 e0       	ldi	r25, 0x00	; 0
+     6ec:	f2 de       	rcall	.-540    	; 0x4d2 <_Z8IntToStri>
+     6ee:	5f d5       	rcall	.+2750   	; 0x11ae <_Z10UART_PrintPKc>
+     6f0:	81 e6       	ldi	r24, 0x61	; 97
+     6f2:	90 e0       	ldi	r25, 0x00	; 0
+     6f4:	5c d5       	rcall	.+2744   	; 0x11ae <_Z10UART_PrintPKc>
+	UART_Print(IntToStr(ArawValue[2])); UART_Print("\t");
+     6f6:	80 91 f1 00 	lds	r24, 0x00F1
+     6fa:	90 e0       	ldi	r25, 0x00	; 0
+     6fc:	ea de       	rcall	.-556    	; 0x4d2 <_Z8IntToStri>
+     6fe:	57 d5       	rcall	.+2734   	; 0x11ae <_Z10UART_PrintPKc>
+     700:	81 e6       	ldi	r24, 0x61	; 97
+     702:	90 e0       	ldi	r25, 0x00	; 0
+     704:	54 d5       	rcall	.+2728   	; 0x11ae <_Z10UART_PrintPKc>
+	UART_Print(IntToStr(ArawValue[6])); UART_Print("\t");
+     706:	80 91 f5 00 	lds	r24, 0x00F5
+     70a:	90 e0       	ldi	r25, 0x00	; 0
+     70c:	e2 de       	rcall	.-572    	; 0x4d2 <_Z8IntToStri>
+     70e:	4f d5       	rcall	.+2718   	; 0x11ae <_Z10UART_PrintPKc>
+     710:	81 e6       	ldi	r24, 0x61	; 97
+     712:	90 e0       	ldi	r25, 0x00	; 0
+     714:	4c d5       	rcall	.+2712   	; 0x11ae <_Z10UART_PrintPKc>
+	UART_Print(IntToStr(ArawValue[7])); UART_Print("\t");
+     716:	80 91 f6 00 	lds	r24, 0x00F6
+     71a:	90 e0       	ldi	r25, 0x00	; 0
+     71c:	da de       	rcall	.-588    	; 0x4d2 <_Z8IntToStri>
+     71e:	47 d5       	rcall	.+2702   	; 0x11ae <_Z10UART_PrintPKc>
+     720:	81 e6       	ldi	r24, 0x61	; 97
+     722:	90 e0       	ldi	r25, 0x00	; 0
+     724:	44 d5       	rcall	.+2696   	; 0x11ae <_Z10UART_PrintPKc>
+	UART_Print("\n");
+     726:	8d e7       	ldi	r24, 0x7D	; 125
+     728:	90 e0       	ldi	r25, 0x00	; 0
+     72a:	41 d5       	rcall	.+2690   	; 0x11ae <_Z10UART_PrintPKc>
+     72c:	08 95       	ret
+
+0000072e <_Z14Initializationv>:
+}
+
+
+ void Initialization(){
+
+	Athrottle.setRange(80);
+     72e:	60 e5       	ldi	r22, 0x50	; 80
+     730:	88 ee       	ldi	r24, 0xE8	; 232
+     732:	90 e0       	ldi	r25, 0x00	; 0
+     734:	d2 dc       	rcall	.-1628   	; 0xda <_ZN6Analog8setRangeEh>
+	ecu.Tacceleration = 3;
+     736:	83 e0       	ldi	r24, 0x03	; 3
+     738:	80 93 b7 00 	sts	0x00B7, r24
+	
+	T1.setTime(16);			// set timer (16x32ms)
+     73c:	60 e1       	ldi	r22, 0x10	; 16
+     73e:	8a ec       	ldi	r24, 0xCA	; 202
+     740:	90 e0       	ldi	r25, 0x00	; 0
+     742:	ea d4       	rcall	.+2516   	; 0x1118 <_ZN5Timer7setTimeEh>
+	T1.enable();			// enable timer
+     744:	8a ec       	ldi	r24, 0xCA	; 202
+     746:	90 e0       	ldi	r25, 0x00	; 0
+     748:	0b d5       	rcall	.+2582   	; 0x1160 <_ZN5Timer6enableEv>
+	
+	T2.setTime(60);			// set timer (60*x32ms)
+     74a:	6c e3       	ldi	r22, 0x3C	; 60
+     74c:	85 ec       	ldi	r24, 0xC5	; 197
+     74e:	90 e0       	ldi	r25, 0x00	; 0
+     750:	e3 d4       	rcall	.+2502   	; 0x1118 <_ZN5Timer7setTimeEh>
+	T2.enable();			// enable timer
+     752:	85 ec       	ldi	r24, 0xC5	; 197
+     754:	90 e0       	ldi	r25, 0x00	; 0
+     756:	04 d5       	rcall	.+2568   	; 0x1160 <_ZN5Timer6enableEv>
+	
+	lamp.setPWM(2);
+     758:	62 e0       	ldi	r22, 0x02	; 2
+     75a:	8e ea       	ldi	r24, 0xAE	; 174
+     75c:	90 e0       	ldi	r25, 0x00	; 0
+     75e:	be d4       	rcall	.+2428   	; 0x10dc <_ZN3PWM6setPWMEh>
+	
+	keyIgnitionMode = 0;
+     760:	10 92 96 00 	sts	0x0096, r1
+     764:	10 92 95 00 	sts	0x0095, r1
+     768:	08 95       	ret
+
+0000076a <_Z9Functionsh>:
+}
+
+void Functions(uint8_t func){
+	switch( func ){
+     76a:	82 31       	cpi	r24, 0x12	; 18
+     76c:	69 f1       	breq	.+90     	; 0x7c8 <_Z9Functionsh+0x5e>
+     76e:	30 f4       	brcc	.+12     	; 0x77c <_Z9Functionsh+0x12>
+     770:	80 31       	cpi	r24, 0x10	; 16
+     772:	71 f0       	breq	.+28     	; 0x790 <_Z9Functionsh+0x26>
+     774:	81 31       	cpi	r24, 0x11	; 17
+     776:	09 f0       	breq	.+2      	; 0x77a <_Z9Functionsh+0x10>
+     778:	67 c0       	rjmp	.+206    	; 0x848 <_Z9Functionsh+0xde>
+     77a:	18 c0       	rjmp	.+48     	; 0x7ac <_Z9Functionsh+0x42>
+     77c:	80 32       	cpi	r24, 0x20	; 32
+     77e:	09 f4       	brne	.+2      	; 0x782 <_Z9Functionsh+0x18>
+     780:	45 c0       	rjmp	.+138    	; 0x80c <_Z9Functionsh+0xa2>
+     782:	81 32       	cpi	r24, 0x21	; 33
+     784:	09 f4       	brne	.+2      	; 0x788 <_Z9Functionsh+0x1e>
+     786:	4e c0       	rjmp	.+156    	; 0x824 <_Z9Functionsh+0xba>
+     788:	83 31       	cpi	r24, 0x13	; 19
+     78a:	09 f0       	breq	.+2      	; 0x78e <_Z9Functionsh+0x24>
+     78c:	5d c0       	rjmp	.+186    	; 0x848 <_Z9Functionsh+0xde>
+     78e:	30 c0       	rjmp	.+96     	; 0x7f0 <_Z9Functionsh+0x86>
+		case 0x10:	// blink Left
+			if( !(testbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1) || testbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1) )){
+     790:	80 91 94 00 	lds	r24, 0x0094
+     794:	80 fd       	sbrc	r24, 0
+     796:	58 c0       	rjmp	.+176    	; 0x848 <_Z9Functionsh+0xde>
+     798:	82 fd       	sbrc	r24, 2
+     79a:	56 c0       	rjmp	.+172    	; 0x848 <_Z9Functionsh+0xde>
+				setbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+     79c:	8d 7f       	andi	r24, 0xFD	; 253
+     79e:	81 60       	ori	r24, 0x01	; 1
+     7a0:	80 93 94 00 	sts	0x0094, r24
+				TVblink = TCblink;
+     7a4:	8e e0       	ldi	r24, 0x0E	; 14
+     7a6:	80 93 bf 00 	sts	0x00BF, r24
+     7aa:	08 95       	ret
+			}
+			break;
+		case  0x11:	// blink Right
+			if( !(testbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1) || testbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1) )){
+     7ac:	80 91 94 00 	lds	r24, 0x0094
+     7b0:	81 fd       	sbrc	r24, 1
+     7b2:	4a c0       	rjmp	.+148    	; 0x848 <_Z9Functionsh+0xde>
+     7b4:	82 fd       	sbrc	r24, 2
+     7b6:	48 c0       	rjmp	.+144    	; 0x848 <_Z9Functionsh+0xde>
+				setbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+     7b8:	8e 7f       	andi	r24, 0xFE	; 254
+     7ba:	82 60       	ori	r24, 0x02	; 2
+     7bc:	80 93 94 00 	sts	0x0094, r24
+				TVblink = TCblink;
+     7c0:	8e e0       	ldi	r24, 0x0E	; 14
+     7c2:	80 93 bf 00 	sts	0x00BF, r24
+     7c6:	08 95       	ret
+			}
+			break;
+		case 0x12:	// blink Alert
+			if( !( testbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1) || testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ) ){
+     7c8:	80 91 94 00 	lds	r24, 0x0094
+     7cc:	82 fd       	sbrc	r24, 2
+     7ce:	0a c0       	rjmp	.+20     	; 0x7e4 <_Z9Functionsh+0x7a>
+     7d0:	84 fd       	sbrc	r24, 4
+     7d2:	3a c0       	rjmp	.+116    	; 0x848 <_Z9Functionsh+0xde>
+				setbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+     7d4:	8c 7f       	andi	r24, 0xFC	; 252
+     7d6:	84 60       	ori	r24, 0x04	; 4
+     7d8:	80 93 94 00 	sts	0x0094, r24
+				TVblink = 255;
+     7dc:	8f ef       	ldi	r24, 0xFF	; 255
+     7de:	80 93 bf 00 	sts	0x00BF, r24
+     7e2:	08 95       	ret
+			}
+			else if( !testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ) {
+     7e4:	84 fd       	sbrc	r24, 4
+     7e6:	30 c0       	rjmp	.+96     	; 0x848 <_Z9Functionsh+0xde>
+				TVblink = 1;	// off
+     7e8:	81 e0       	ldi	r24, 0x01	; 1
+     7ea:	80 93 bf 00 	sts	0x00BF, r24
+     7ee:	08 95       	ret
+			}
+			break;
+		case 0x13:	// Light
+			if( lamp.isEnabled() )
+     7f0:	8e ea       	ldi	r24, 0xAE	; 174
+     7f2:	90 e0       	ldi	r25, 0x00	; 0
+     7f4:	52 d4       	rcall	.+2212   	; 0x109a <_ZN3PWM9isEnabledEv>
+     7f6:	88 23       	and	r24, r24
+     7f8:	29 f0       	breq	.+10     	; 0x804 <_Z9Functionsh+0x9a>
+				lamp.setPWM(5);
+     7fa:	65 e0       	ldi	r22, 0x05	; 5
+     7fc:	8e ea       	ldi	r24, 0xAE	; 174
+     7fe:	90 e0       	ldi	r25, 0x00	; 0
+     800:	6d d4       	rcall	.+2266   	; 0x10dc <_ZN3PWM6setPWMEh>
+     802:	08 95       	ret
+			else
+				lamp.disable();
+     804:	8e ea       	ldi	r24, 0xAE	; 174
+     806:	90 e0       	ldi	r25, 0x00	; 0
+     808:	42 d4       	rcall	.+2180   	; 0x108e <_ZN3PWM7disableEv>
+     80a:	08 95       	ret
+			break;
+			
+		case 0x20:
+			if( !testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ){
+     80c:	80 91 94 00 	lds	r24, 0x0094
+     810:	84 fd       	sbrc	r24, 4
+     812:	1a c0       	rjmp	.+52     	; 0x848 <_Z9Functionsh+0xde>
+				setbit(BOOL_VAR1, BOOL_BAT_LOW1_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1);
+     814:	88 7f       	andi	r24, 0xF8	; 248
+     816:	80 61       	ori	r24, 0x10	; 16
+     818:	80 93 94 00 	sts	0x0094, r24
+				TVblink = 255;
+     81c:	8f ef       	ldi	r24, 0xFF	; 255
+     81e:	80 93 bf 00 	sts	0x00BF, r24
+     822:	08 95       	ret
+			}
+			break;
+		case 0x21:
+			if( testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ){
+     824:	80 91 94 00 	lds	r24, 0x0094
+     828:	84 ff       	sbrs	r24, 4
+     82a:	0e c0       	rjmp	.+28     	; 0x848 <_Z9Functionsh+0xde>
+				TVblink = 1;
+     82c:	81 e0       	ldi	r24, 0x01	; 1
+     82e:	80 93 bf 00 	sts	0x00BF, r24
+				DlightRigth.clear();
+     832:	8f e0       	ldi	r24, 0x0F	; 15
+     834:	91 e0       	ldi	r25, 0x01	; 1
+     836:	fc d2       	rcall	.+1528   	; 0xe30 <_ZN7Digital5clearEv>
+				DlightLeft.clear();
+     838:	87 e1       	ldi	r24, 0x17	; 23
+     83a:	91 e0       	ldi	r25, 0x01	; 1
+     83c:	f9 d2       	rcall	.+1522   	; 0xe30 <_ZN7Digital5clearEv>
+				clearbit(BOOL_VAR1, BOOL_LAMP_LEFT_V1);
+				clearbit(BOOL_VAR1, BOOL_LAMP_RIGTH_V1);
+				clearbit(BOOL_VAR1, BOOL_BAT_LOW1_V1);
+     83e:	80 91 94 00 	lds	r24, 0x0094
+     842:	8c 7e       	andi	r24, 0xEC	; 236
+     844:	80 93 94 00 	sts	0x0094, r24
+     848:	08 95       	ret
+
+0000084a <_Z3TF2v>:
+	}
+	//------------------
+}
+// Timer function T2 (2s)
+void TF2(){
+	if( report1 ) funcReport();
+     84a:	80 91 93 00 	lds	r24, 0x0093
+     84e:	81 11       	cpse	r24, r1
+     850:	41 df       	rcall	.-382    	; 0x6d4 <_Z10funcReportv>
+	
+	// check voltage level action
+	if( VoltageRPT == VOLTAGE_RPT_NUM ){
+     852:	80 91 97 00 	lds	r24, 0x0097
+     856:	90 91 98 00 	lds	r25, 0x0098
+     85a:	88 3e       	cpi	r24, 0xE8	; 232
+     85c:	93 40       	sbci	r25, 0x03	; 3
+     85e:	21 f4       	brne	.+8      	; 0x868 <_Z3TF2v+0x1e>
+		ecu.Enabled = false;
+     860:	10 92 b9 00 	sts	0x00B9, r1
+		Functions(0x20);
+     864:	80 e2       	ldi	r24, 0x20	; 32
+     866:	81 df       	rcall	.-254    	; 0x76a <_Z9Functionsh>
+     868:	08 95       	ret
+
+0000086a <main>:
+	return _maxRange;
+}
+
+int main(void)
+{	
+	UART_init(1000000);
+     86a:	60 e4       	ldi	r22, 0x40	; 64
+     86c:	72 e4       	ldi	r23, 0x42	; 66
+     86e:	8f e0       	ldi	r24, 0x0F	; 15
+     870:	90 e0       	ldi	r25, 0x00	; 0
+     872:	80 d4       	rcall	.+2304   	; 0x1174 <_Z9UART_initm>
+	//UART_init(9600);
+	
+	cli();
+     874:	f8 94       	cli
+	InitADCInterrupt();
+     876:	72 de       	rcall	.-796    	; 0x55c <_Z16InitADCInterruptv>
+	InitTimeInterrupt0();
+     878:	9b de       	rcall	.-714    	; 0x5b0 <_Z18InitTimeInterrupt0v>
+	InitTimeInterrupt2();
+     87a:	d6 de       	rcall	.-596    	; 0x628 <_Z18InitTimeInterrupt2v>
+	sei();
+     87c:	78 94       	sei
+	
+	UART_Print("\nRN Car Controller FW v1.0\n");
+     87e:	83 e6       	ldi	r24, 0x63	; 99
+     880:	90 e0       	ldi	r25, 0x00	; 0
+     882:	95 d4       	rcall	.+2346   	; 0x11ae <_Z10UART_PrintPKc>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     884:	2f ef       	ldi	r18, 0xFF	; 255
+     886:	86 e7       	ldi	r24, 0x76	; 118
+     888:	91 e0       	ldi	r25, 0x01	; 1
+     88a:	21 50       	subi	r18, 0x01	; 1
+     88c:	80 40       	sbci	r24, 0x00	; 0
+     88e:	90 40       	sbci	r25, 0x00	; 0
+     890:	e1 f7       	brne	.-8      	; 0x88a <main+0x20>
+     892:	00 c0       	rjmp	.+0      	; 0x894 <main+0x2a>
+     894:	00 00       	nop
+	_delay_ms(60);
+	Initialization();
+     896:	4b df       	rcall	.-362    	; 0x72e <_Z14Initializationv>
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+		else keyButton.pressUp();
+		// key swith
+		if(AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==50||		
+		AbuttonsPanel.rawValue()==25||AbuttonsPanel.rawValue()==52)		 keySwitch = true;
+     898:	99 24       	eor	r9, r9
+     89a:	93 94       	inc	r9
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		////////////////////////////////////////////////////////////////////////
+		// Buttons Logic
+		if( (keyLeft.pressed||keyRigh.pressed) && (keyLeft.duration>1000 && keyLeft.duration<3200) && (keyRigh.duration>1000 && keyRigh.duration<3200) ){
+     89c:	0c ea       	ldi	r16, 0xAC	; 172
+     89e:	10 e0       	ldi	r17, 0x00	; 0
+     8a0:	0f 2e       	mov	r0, r31
+     8a2:	f8 ea       	ldi	r31, 0xA8	; 168
+     8a4:	ef 2e       	mov	r14, r31
+     8a6:	f0 e0       	ldi	r31, 0x00	; 0
+     8a8:	ff 2e       	mov	r15, r31
+     8aa:	f0 2d       	mov	r31, r0
+		// Key Panel ( P0 )
+		if(AbuttonsPanel.rawValue()==255||AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40 ){
+			if( PanelKeyRPT < PANEL_KEY_RPT_NUM )
+				PanelKeyRPT ++;
+			else{
+				ecu.Enabled = false;
+     8ac:	0f 2e       	mov	r0, r31
+     8ae:	f9 eb       	ldi	r31, 0xB9	; 185
+     8b0:	cf 2e       	mov	r12, r31
+     8b2:	f0 e0       	ldi	r31, 0x00	; 0
+     8b4:	df 2e       	mov	r13, r31
+     8b6:	f0 2d       	mov	r31, r0
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		/////////////////////////////////////////////////////////////////////////
+		// check voltage level
+		if( (ArawValue[5] < (1050/VOLT_CONVERSION)) && (VoltageRPT < VOLTAGE_RPT_NUM) )
+     8b8:	c4 ef       	ldi	r28, 0xF4	; 244
+     8ba:	d0 e0       	ldi	r29, 0x00	; 0
+			
+			
+			
+			else if( cmd == 0x60 ){
+				uint16_t volts = ArawValue[5];
+				volts *= VOLT_CONVERSION;
+     8bc:	0f 2e       	mov	r0, r31
+     8be:	ff e0       	ldi	r31, 0x0F	; 15
+     8c0:	8f 2e       	mov	r8, r31
+     8c2:	f0 2d       	mov	r31, r0
+				MotorR.set();
+				MotorL.set();
+			}
+			
+			else if( cmd == 0x40){
+				UART_Print(IntToStr(ArawValue[0])); UART_Print("\t");
+     8c4:	0f 2e       	mov	r0, r31
+     8c6:	ff ee       	ldi	r31, 0xEF	; 239
+     8c8:	2f 2e       	mov	r2, r31
+     8ca:	f0 e0       	ldi	r31, 0x00	; 0
+     8cc:	3f 2e       	mov	r3, r31
+     8ce:	f0 2d       	mov	r31, r0
+				UART_Print(IntToStr(ArawValue[6])); UART_Print("\t");
+     8d0:	0f 2e       	mov	r0, r31
+     8d2:	f5 ef       	ldi	r31, 0xF5	; 245
+     8d4:	4f 2e       	mov	r4, r31
+     8d6:	f0 e0       	ldi	r31, 0x00	; 0
+     8d8:	5f 2e       	mov	r5, r31
+     8da:	f0 2d       	mov	r31, r0
+				UART_Print(IntToStr(ArawValue[7])); UART_Print("\t");
+     8dc:	0f 2e       	mov	r0, r31
+     8de:	f6 ef       	ldi	r31, 0xF6	; 246
+     8e0:	6f 2e       	mov	r6, r31
+     8e2:	f0 e0       	ldi	r31, 0x00	; 0
+     8e4:	7f 2e       	mov	r7, r31
+     8e6:	f0 2d       	mov	r31, r0
+	
+    while(1)
+    {
+		//***********************
+		// Timers
+		T1.update();
+     8e8:	8a ec       	ldi	r24, 0xCA	; 202
+     8ea:	90 e0       	ldi	r25, 0x00	; 0
+     8ec:	27 d4       	rcall	.+2126   	; 0x113c <_ZN5Timer6updateEv>
+		T2.update();
+     8ee:	85 ec       	ldi	r24, 0xC5	; 197
+     8f0:	90 e0       	ldi	r25, 0x00	; 0
+     8f2:	24 d4       	rcall	.+2120   	; 0x113c <_ZN5Timer6updateEv>
+		//T3.update();
+		
+		
+		//////////////////////////////////////////////////////////////////////////
+		ADC_update();
+     8f4:	50 de       	rcall	.-864    	; 0x596 <_Z10ADC_updatev>
+		//////////////////////////////////////////////////////////////////////////
+		
+		//////////////////////////////////////////////////////////////////////////
+		Athrottle.Update();
+     8f6:	88 ee       	ldi	r24, 0xE8	; 232
+     8f8:	90 e0       	ldi	r25, 0x00	; 0
+     8fa:	a8 dc       	rcall	.-1712   	; 0x24c <_ZN9AnalogExp6UpdateEv>
+		ecu.setTargetSPD( Athrottle.Value() );
+     8fc:	88 ee       	ldi	r24, 0xE8	; 232
+     8fe:	90 e0       	ldi	r25, 0x00	; 0
+     900:	e9 db       	rcall	.-2094   	; 0xd4 <_ZN6Analog5ValueEv>
+     902:	68 2f       	mov	r22, r24
+     904:	82 eb       	ldi	r24, 0xB2	; 178
+     906:	90 e0       	ldi	r25, 0x00	; 0
+     908:	88 d3       	rcall	.+1808   	; 0x101a <_ZN17EngineControlUnit12setTargetSPDEh>
+		//////////////////////////////////////////////////////////////////////////
+		
+		/////////////////////////////////////////////////////////////////////////
+		// Check inputs
+		if( Aleft.rawValue() > 200 ) keyLeft.pressDown();		// Left input
+     90a:	83 ee       	ldi	r24, 0xE3	; 227
+     90c:	90 e0       	ldi	r25, 0x00	; 0
+     90e:	bb db       	rcall	.-2186   	; 0x86 <_ZN6Analog8rawValueEv>
+     910:	89 3c       	cpi	r24, 0xC9	; 201
+     912:	20 f0       	brcs	.+8      	; 0x91c <main+0xb2>
+     914:	8a ea       	ldi	r24, 0xAA	; 170
+     916:	90 e0       	ldi	r25, 0x00	; 0
+     918:	9a d3       	rcall	.+1844   	; 0x104e <_ZN8KeyInput9pressDownEv>
+     91a:	03 c0       	rjmp	.+6      	; 0x922 <main+0xb8>
+		else keyLeft.pressUp();
+     91c:	8a ea       	ldi	r24, 0xAA	; 170
+     91e:	90 e0       	ldi	r25, 0x00	; 0
+     920:	89 d3       	rcall	.+1810   	; 0x1034 <_ZN8KeyInput7pressUpEv>
+		if( Arigth.rawValue() > 200 ) keyRigh.pressDown();		// Right input
+     922:	8e ed       	ldi	r24, 0xDE	; 222
+     924:	90 e0       	ldi	r25, 0x00	; 0
+     926:	af db       	rcall	.-2210   	; 0x86 <_ZN6Analog8rawValueEv>
+     928:	89 3c       	cpi	r24, 0xC9	; 201
+     92a:	20 f0       	brcs	.+8      	; 0x934 <main+0xca>
+     92c:	86 ea       	ldi	r24, 0xA6	; 166
+     92e:	90 e0       	ldi	r25, 0x00	; 0
+     930:	8e d3       	rcall	.+1820   	; 0x104e <_ZN8KeyInput9pressDownEv>
+     932:	03 c0       	rjmp	.+6      	; 0x93a <main+0xd0>
+		else keyRigh.pressUp();
+     934:	86 ea       	ldi	r24, 0xA6	; 166
+     936:	90 e0       	ldi	r25, 0x00	; 0
+     938:	7d d3       	rcall	.+1786   	; 0x1034 <_ZN8KeyInput7pressUpEv>
+		if( Amiddle.rawValue() > 200 ) keyMiddle.pressDown();	// Middle input
+     93a:	89 ed       	ldi	r24, 0xD9	; 217
+     93c:	90 e0       	ldi	r25, 0x00	; 0
+     93e:	a3 db       	rcall	.-2234   	; 0x86 <_ZN6Analog8rawValueEv>
+     940:	89 3c       	cpi	r24, 0xC9	; 201
+     942:	20 f0       	brcs	.+8      	; 0x94c <main+0xe2>
+     944:	82 ea       	ldi	r24, 0xA2	; 162
+     946:	90 e0       	ldi	r25, 0x00	; 0
+     948:	82 d3       	rcall	.+1796   	; 0x104e <_ZN8KeyInput9pressDownEv>
+     94a:	03 c0       	rjmp	.+6      	; 0x952 <main+0xe8>
+		else keyMiddle.pressUp();
+     94c:	82 ea       	ldi	r24, 0xA2	; 162
+     94e:	90 e0       	ldi	r25, 0x00	; 0
+     950:	71 d3       	rcall	.+1762   	; 0x1034 <_ZN8KeyInput7pressUpEv>
+		// button on panel
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+     952:	84 ed       	ldi	r24, 0xD4	; 212
+     954:	90 e0       	ldi	r25, 0x00	; 0
+     956:	97 db       	rcall	.-2258   	; 0x86 <_ZN6Analog8rawValueEv>
+     958:	8b 34       	cpi	r24, 0x4B	; 75
+     95a:	a1 f0       	breq	.+40     	; 0x984 <main+0x11a>
+     95c:	84 ed       	ldi	r24, 0xD4	; 212
+     95e:	90 e0       	ldi	r25, 0x00	; 0
+     960:	92 db       	rcall	.-2268   	; 0x86 <_ZN6Analog8rawValueEv>
+     962:	88 32       	cpi	r24, 0x28	; 40
+     964:	79 f0       	breq	.+30     	; 0x984 <main+0x11a>
+     966:	84 ed       	ldi	r24, 0xD4	; 212
+     968:	90 e0       	ldi	r25, 0x00	; 0
+     96a:	8d db       	rcall	.-2278   	; 0x86 <_ZN6Analog8rawValueEv>
+     96c:	89 32       	cpi	r24, 0x29	; 41
+     96e:	51 f0       	breq	.+20     	; 0x984 <main+0x11a>
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+     970:	84 ed       	ldi	r24, 0xD4	; 212
+     972:	90 e0       	ldi	r25, 0x00	; 0
+     974:	88 db       	rcall	.-2288   	; 0x86 <_ZN6Analog8rawValueEv>
+		if( Arigth.rawValue() > 200 ) keyRigh.pressDown();		// Right input
+		else keyRigh.pressUp();
+		if( Amiddle.rawValue() > 200 ) keyMiddle.pressDown();	// Middle input
+		else keyMiddle.pressUp();
+		// button on panel
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+     976:	8c 32       	cpi	r24, 0x2C	; 44
+     978:	29 f0       	breq	.+10     	; 0x984 <main+0x11a>
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+     97a:	84 ed       	ldi	r24, 0xD4	; 212
+     97c:	90 e0       	ldi	r25, 0x00	; 0
+     97e:	83 db       	rcall	.-2298   	; 0x86 <_ZN6Analog8rawValueEv>
+		if( Arigth.rawValue() > 200 ) keyRigh.pressDown();		// Right input
+		else keyRigh.pressUp();
+		if( Amiddle.rawValue() > 200 ) keyMiddle.pressDown();	// Middle input
+		else keyMiddle.pressUp();
+		// button on panel
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+     980:	89 31       	cpi	r24, 0x19	; 25
+     982:	21 f4       	brne	.+8      	; 0x98c <main+0x122>
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+     984:	8e e9       	ldi	r24, 0x9E	; 158
+     986:	90 e0       	ldi	r25, 0x00	; 0
+     988:	62 d3       	rcall	.+1732   	; 0x104e <_ZN8KeyInput9pressDownEv>
+     98a:	03 c0       	rjmp	.+6      	; 0x992 <main+0x128>
+		else keyButton.pressUp();
+     98c:	8e e9       	ldi	r24, 0x9E	; 158
+     98e:	90 e0       	ldi	r25, 0x00	; 0
+     990:	51 d3       	rcall	.+1698   	; 0x1034 <_ZN8KeyInput7pressUpEv>
+		// key swith
+		if(AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==50||		
+     992:	84 ed       	ldi	r24, 0xD4	; 212
+     994:	90 e0       	ldi	r25, 0x00	; 0
+     996:	77 db       	rcall	.-2322   	; 0x86 <_ZN6Analog8rawValueEv>
+     998:	87 35       	cpi	r24, 0x57	; 87
+     99a:	a1 f0       	breq	.+40     	; 0x9c4 <main+0x15a>
+     99c:	84 ed       	ldi	r24, 0xD4	; 212
+     99e:	90 e0       	ldi	r25, 0x00	; 0
+     9a0:	72 db       	rcall	.-2332   	; 0x86 <_ZN6Analog8rawValueEv>
+     9a2:	88 32       	cpi	r24, 0x28	; 40
+     9a4:	79 f0       	breq	.+30     	; 0x9c4 <main+0x15a>
+     9a6:	84 ed       	ldi	r24, 0xD4	; 212
+     9a8:	90 e0       	ldi	r25, 0x00	; 0
+     9aa:	6d db       	rcall	.-2342   	; 0x86 <_ZN6Analog8rawValueEv>
+     9ac:	82 33       	cpi	r24, 0x32	; 50
+     9ae:	51 f0       	breq	.+20     	; 0x9c4 <main+0x15a>
+		AbuttonsPanel.rawValue()==25||AbuttonsPanel.rawValue()==52)		 keySwitch = true;
+     9b0:	84 ed       	ldi	r24, 0xD4	; 212
+     9b2:	90 e0       	ldi	r25, 0x00	; 0
+     9b4:	68 db       	rcall	.-2352   	; 0x86 <_ZN6Analog8rawValueEv>
+		// button on panel
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+		else keyButton.pressUp();
+		// key swith
+		if(AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==50||		
+     9b6:	89 31       	cpi	r24, 0x19	; 25
+     9b8:	29 f0       	breq	.+10     	; 0x9c4 <main+0x15a>
+		AbuttonsPanel.rawValue()==25||AbuttonsPanel.rawValue()==52)		 keySwitch = true;
+     9ba:	84 ed       	ldi	r24, 0xD4	; 212
+     9bc:	90 e0       	ldi	r25, 0x00	; 0
+     9be:	63 db       	rcall	.-2362   	; 0x86 <_ZN6Analog8rawValueEv>
+		// button on panel
+		if(AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==41||
+			AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==25 ) keyButton.pressDown();				
+		else keyButton.pressUp();
+		// key swith
+		if(AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40||AbuttonsPanel.rawValue()==50||		
+     9c0:	84 33       	cpi	r24, 0x34	; 52
+     9c2:	19 f4       	brne	.+6      	; 0x9ca <main+0x160>
+		AbuttonsPanel.rawValue()==25||AbuttonsPanel.rawValue()==52)		 keySwitch = true;
+     9c4:	90 92 9d 00 	sts	0x009D, r9
+     9c8:	02 c0       	rjmp	.+4      	; 0x9ce <main+0x164>
+		else keySwitch = false;
+     9ca:	10 92 9d 00 	sts	0x009D, r1
+		// key Ignition P1
+		if( (AbuttonsPanel.rawValue()==104||AbuttonsPanel.rawValue()==41||AbuttonsPanel.rawValue()==50) )//&&
+     9ce:	84 ed       	ldi	r24, 0xD4	; 212
+     9d0:	90 e0       	ldi	r25, 0x00	; 0
+     9d2:	59 db       	rcall	.-2382   	; 0x86 <_ZN6Analog8rawValueEv>
+     9d4:	88 36       	cpi	r24, 0x68	; 104
+     9d6:	51 f0       	breq	.+20     	; 0x9ec <main+0x182>
+     9d8:	84 ed       	ldi	r24, 0xD4	; 212
+     9da:	90 e0       	ldi	r25, 0x00	; 0
+     9dc:	54 db       	rcall	.-2392   	; 0x86 <_ZN6Analog8rawValueEv>
+     9de:	89 32       	cpi	r24, 0x29	; 41
+     9e0:	29 f0       	breq	.+10     	; 0x9ec <main+0x182>
+     9e2:	84 ed       	ldi	r24, 0xD4	; 212
+     9e4:	90 e0       	ldi	r25, 0x00	; 0
+     9e6:	4f db       	rcall	.-2402   	; 0x86 <_ZN6Analog8rawValueEv>
+     9e8:	82 33       	cpi	r24, 0x32	; 50
+     9ea:	19 f4       	brne	.+6      	; 0x9f2 <main+0x188>
+			keyIgnitionP1 = true;
+     9ec:	90 92 9c 00 	sts	0x009C, r9
+     9f0:	02 c0       	rjmp	.+4      	; 0x9f6 <main+0x18c>
+		else keyIgnitionP1 = false;
+     9f2:	10 92 9c 00 	sts	0x009C, r1
+		//(KeyIgnition1RPT < KEY_IGNITION_NUM) )	KeyIgnition1RPT++;			// filter for the input
+		//else if( KeyIgnition1RPT > 0 ) KeyIgnition1RPT--;				
+		//if( KeyIgnition1RPT == KEY_IGNITION_NUM) keyIgnitionP1 = true;											// change state of variable
+		//else if( KeyIgnition1RPT == 0 ) keyIgnitionP1 = false;
+		// key Ignition P2
+		if( AbuttonsPanel.rawValue()==128||AbuttonsPanel.rawValue()==44||AbuttonsPanel.rawValue()==52 )
+     9f6:	84 ed       	ldi	r24, 0xD4	; 212
+     9f8:	90 e0       	ldi	r25, 0x00	; 0
+     9fa:	45 db       	rcall	.-2422   	; 0x86 <_ZN6Analog8rawValueEv>
+     9fc:	80 38       	cpi	r24, 0x80	; 128
+     9fe:	51 f0       	breq	.+20     	; 0xa14 <main+0x1aa>
+     a00:	84 ed       	ldi	r24, 0xD4	; 212
+     a02:	90 e0       	ldi	r25, 0x00	; 0
+     a04:	40 db       	rcall	.-2432   	; 0x86 <_ZN6Analog8rawValueEv>
+     a06:	8c 32       	cpi	r24, 0x2C	; 44
+     a08:	29 f0       	breq	.+10     	; 0xa14 <main+0x1aa>
+     a0a:	84 ed       	ldi	r24, 0xD4	; 212
+     a0c:	90 e0       	ldi	r25, 0x00	; 0
+     a0e:	3b db       	rcall	.-2442   	; 0x86 <_ZN6Analog8rawValueEv>
+     a10:	84 33       	cpi	r24, 0x34	; 52
+     a12:	19 f4       	brne	.+6      	; 0xa1a <main+0x1b0>
+			keyIgnitionP2 = true;
+     a14:	90 92 9b 00 	sts	0x009B, r9
+     a18:	02 c0       	rjmp	.+4      	; 0xa1e <main+0x1b4>
+		else keyIgnitionP2 = false;
+     a1a:	10 92 9b 00 	sts	0x009B, r1
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		////////////////////////////////////////////////////////////////////////
+		// Buttons Logic
+		if( (keyLeft.pressed||keyRigh.pressed) && (keyLeft.duration>1000 && keyLeft.duration<3200) && (keyRigh.duration>1000 && keyRigh.duration<3200) ){
+     a1e:	80 91 aa 00 	lds	r24, 0x00AA
+     a22:	81 11       	cpse	r24, r1
+     a24:	04 c0       	rjmp	.+8      	; 0xa2e <main+0x1c4>
+     a26:	80 91 a6 00 	lds	r24, 0x00A6
+     a2a:	88 23       	and	r24, r24
+     a2c:	91 f0       	breq	.+36     	; 0xa52 <main+0x1e8>
+     a2e:	f8 01       	movw	r30, r16
+     a30:	80 81       	ld	r24, Z
+     a32:	91 81       	ldd	r25, Z+1	; 0x01
+     a34:	89 5e       	subi	r24, 0xE9	; 233
+     a36:	93 40       	sbci	r25, 0x03	; 3
+     a38:	87 39       	cpi	r24, 0x97	; 151
+     a3a:	98 40       	sbci	r25, 0x08	; 8
+     a3c:	50 f4       	brcc	.+20     	; 0xa52 <main+0x1e8>
+     a3e:	f7 01       	movw	r30, r14
+     a40:	80 81       	ld	r24, Z
+     a42:	91 81       	ldd	r25, Z+1	; 0x01
+     a44:	89 5e       	subi	r24, 0xE9	; 233
+     a46:	93 40       	sbci	r25, 0x03	; 3
+     a48:	87 39       	cpi	r24, 0x97	; 151
+     a4a:	98 40       	sbci	r25, 0x08	; 8
+     a4c:	10 f4       	brcc	.+4      	; 0xa52 <main+0x1e8>
+			Functions(0x12);																				// blink Alert
+     a4e:	82 e1       	ldi	r24, 0x12	; 18
+     a50:	8c de       	rcall	.-744    	; 0x76a <_Z9Functionsh>
+		}
+		if( !(testbit(BOOL_VAR1, BOOL_LAMP_ALERT_V1) || testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) ) ){
+     a52:	80 91 94 00 	lds	r24, 0x0094
+     a56:	82 fd       	sbrc	r24, 2
+     a58:	1e c0       	rjmp	.+60     	; 0xa96 <main+0x22c>
+     a5a:	84 fd       	sbrc	r24, 4
+     a5c:	1c c0       	rjmp	.+56     	; 0xa96 <main+0x22c>
+			if( keyLeft.pressed && (keyLeft.duration>700 && keyLeft.duration<2600) ){
+     a5e:	80 91 aa 00 	lds	r24, 0x00AA
+     a62:	88 23       	and	r24, r24
+     a64:	51 f0       	breq	.+20     	; 0xa7a <main+0x210>
+     a66:	f8 01       	movw	r30, r16
+     a68:	80 81       	ld	r24, Z
+     a6a:	91 81       	ldd	r25, Z+1	; 0x01
+     a6c:	8d 5b       	subi	r24, 0xBD	; 189
+     a6e:	92 40       	sbci	r25, 0x02	; 2
+     a70:	8b 36       	cpi	r24, 0x6B	; 107
+     a72:	97 40       	sbci	r25, 0x07	; 7
+     a74:	10 f4       	brcc	.+4      	; 0xa7a <main+0x210>
+				Functions(0x10);																			// blink Left
+     a76:	80 e1       	ldi	r24, 0x10	; 16
+     a78:	78 de       	rcall	.-784    	; 0x76a <_Z9Functionsh>
+			}
+			if( keyRigh.pressed && (keyRigh.duration>700 && keyRigh.duration<2600) ){
+     a7a:	80 91 a6 00 	lds	r24, 0x00A6
+     a7e:	88 23       	and	r24, r24
+     a80:	51 f0       	breq	.+20     	; 0xa96 <main+0x22c>
+     a82:	f7 01       	movw	r30, r14
+     a84:	80 81       	ld	r24, Z
+     a86:	91 81       	ldd	r25, Z+1	; 0x01
+     a88:	8d 5b       	subi	r24, 0xBD	; 189
+     a8a:	92 40       	sbci	r25, 0x02	; 2
+     a8c:	8b 36       	cpi	r24, 0x6B	; 107
+     a8e:	97 40       	sbci	r25, 0x07	; 7
+     a90:	10 f4       	brcc	.+4      	; 0xa96 <main+0x22c>
+				Functions(0x11);																			// blink right
+     a92:	81 e1       	ldi	r24, 0x11	; 17
+     a94:	6a de       	rcall	.-812    	; 0x76a <_Z9Functionsh>
+		}
+		if( keyMiddle.pressed ){
+			//Functions(0x13);																				
+		}
+		// Key Panel ( P0 )
+		if(AbuttonsPanel.rawValue()==255||AbuttonsPanel.rawValue()==75||AbuttonsPanel.rawValue()==87||AbuttonsPanel.rawValue()==40 ){
+     a96:	84 ed       	ldi	r24, 0xD4	; 212
+     a98:	90 e0       	ldi	r25, 0x00	; 0
+     a9a:	f5 da       	rcall	.-2582   	; 0x86 <_ZN6Analog8rawValueEv>
+     a9c:	8f 3f       	cpi	r24, 0xFF	; 255
+     a9e:	79 f0       	breq	.+30     	; 0xabe <main+0x254>
+     aa0:	84 ed       	ldi	r24, 0xD4	; 212
+     aa2:	90 e0       	ldi	r25, 0x00	; 0
+     aa4:	f0 da       	rcall	.-2592   	; 0x86 <_ZN6Analog8rawValueEv>
+     aa6:	8b 34       	cpi	r24, 0x4B	; 75
+     aa8:	51 f0       	breq	.+20     	; 0xabe <main+0x254>
+     aaa:	84 ed       	ldi	r24, 0xD4	; 212
+     aac:	90 e0       	ldi	r25, 0x00	; 0
+     aae:	eb da       	rcall	.-2602   	; 0x86 <_ZN6Analog8rawValueEv>
+     ab0:	87 35       	cpi	r24, 0x57	; 87
+     ab2:	29 f0       	breq	.+10     	; 0xabe <main+0x254>
+     ab4:	84 ed       	ldi	r24, 0xD4	; 212
+     ab6:	90 e0       	ldi	r25, 0x00	; 0
+     ab8:	e6 da       	rcall	.-2612   	; 0x86 <_ZN6Analog8rawValueEv>
+     aba:	88 32       	cpi	r24, 0x28	; 40
+     abc:	a1 f4       	brne	.+40     	; 0xae6 <main+0x27c>
+			if( PanelKeyRPT < PANEL_KEY_RPT_NUM )
+     abe:	80 91 99 00 	lds	r24, 0x0099
+     ac2:	90 91 9a 00 	lds	r25, 0x009A
+     ac6:	8c 32       	cpi	r24, 0x2C	; 44
+     ac8:	21 e0       	ldi	r18, 0x01	; 1
+     aca:	92 07       	cpc	r25, r18
+     acc:	30 f4       	brcc	.+12     	; 0xada <main+0x270>
+				PanelKeyRPT ++;
+     ace:	01 96       	adiw	r24, 0x01	; 1
+     ad0:	90 93 9a 00 	sts	0x009A, r25
+     ad4:	80 93 99 00 	sts	0x0099, r24
+     ad8:	0f c0       	rjmp	.+30     	; 0xaf8 <main+0x28e>
+			else{
+				ecu.Enabled = false;
+     ada:	f6 01       	movw	r30, r12
+     adc:	10 82       	st	Z, r1
+				lamp.disable();
+     ade:	8e ea       	ldi	r24, 0xAE	; 174
+     ae0:	90 e0       	ldi	r25, 0x00	; 0
+     ae2:	d5 d2       	rcall	.+1450   	; 0x108e <_ZN3PWM7disableEv>
+     ae4:	09 c0       	rjmp	.+18     	; 0xaf8 <main+0x28e>
+			}
+		}
+		else{
+			if( !testbit(BOOL_VAR1, BOOL_BAT_LOW1_V1) )
+     ae6:	80 91 94 00 	lds	r24, 0x0094
+     aea:	84 fd       	sbrc	r24, 4
+     aec:	02 c0       	rjmp	.+4      	; 0xaf2 <main+0x288>
+				ecu.Enabled = true;
+     aee:	f6 01       	movw	r30, r12
+     af0:	90 82       	st	Z, r9
+			lamp.enable();
+     af2:	8e ea       	ldi	r24, 0xAE	; 174
+     af4:	90 e0       	ldi	r25, 0x00	; 0
+     af6:	c4 d2       	rcall	.+1416   	; 0x1080 <_ZN3PWM6enableEv>
+		else if( keyIgnitionP1_old && !keyIgnitionP1)
+		keyIgnitionP1_old = false;
+*/
+		 
+		// Button Panel
+		if( keyButton.pressed )
+     af8:	80 91 9e 00 	lds	r24, 0x009E
+     afc:	88 23       	and	r24, r24
+     afe:	19 f0       	breq	.+6      	; 0xb06 <main+0x29c>
+			lamp.incPWM();
+     b00:	8e ea       	ldi	r24, 0xAE	; 174
+     b02:	90 e0       	ldi	r25, 0x00	; 0
+     b04:	f8 d2       	rcall	.+1520   	; 0x10f6 <_ZN3PWM6incPWMEv>
+		if( keySwitch ) 
+     b06:	80 91 9d 00 	lds	r24, 0x009D
+     b0a:	88 23       	and	r24, r24
+     b0c:	21 f0       	breq	.+8      	; 0xb16 <main+0x2ac>
+			lamp.setPWM(2);
+     b0e:	62 e0       	ldi	r22, 0x02	; 2
+     b10:	8e ea       	ldi	r24, 0xAE	; 174
+     b12:	90 e0       	ldi	r25, 0x00	; 0
+     b14:	e3 d2       	rcall	.+1478   	; 0x10dc <_ZN3PWM6setPWMEh>
+		
+		
+		/////////////////////////////////////////////////////////////////////////
+		// inputs release
+		keyLeft.release();
+     b16:	8a ea       	ldi	r24, 0xAA	; 170
+     b18:	90 e0       	ldi	r25, 0x00	; 0
+     b1a:	a5 d2       	rcall	.+1354   	; 0x1066 <_ZN8KeyInput7releaseEv>
+		keyRigh.release();
+     b1c:	86 ea       	ldi	r24, 0xA6	; 166
+     b1e:	90 e0       	ldi	r25, 0x00	; 0
+     b20:	a2 d2       	rcall	.+1348   	; 0x1066 <_ZN8KeyInput7releaseEv>
+		keyMiddle.release();
+     b22:	82 ea       	ldi	r24, 0xA2	; 162
+     b24:	90 e0       	ldi	r25, 0x00	; 0
+     b26:	9f d2       	rcall	.+1342   	; 0x1066 <_ZN8KeyInput7releaseEv>
+		keyButton.release();
+     b28:	8e e9       	ldi	r24, 0x9E	; 158
+     b2a:	90 e0       	ldi	r25, 0x00	; 0
+     b2c:	9c d2       	rcall	.+1336   	; 0x1066 <_ZN8KeyInput7releaseEv>
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		/////////////////////////////////////////////////////////////////////////
+		// check voltage level
+		if( (ArawValue[5] < (1050/VOLT_CONVERSION)) && (VoltageRPT < VOLTAGE_RPT_NUM) )
+     b2e:	88 81       	ld	r24, Y
+     b30:	86 34       	cpi	r24, 0x46	; 70
+     b32:	70 f4       	brcc	.+28     	; 0xb50 <main+0x2e6>
+     b34:	80 91 97 00 	lds	r24, 0x0097
+     b38:	90 91 98 00 	lds	r25, 0x0098
+     b3c:	88 3e       	cpi	r24, 0xE8	; 232
+     b3e:	f3 e0       	ldi	r31, 0x03	; 3
+     b40:	9f 07       	cpc	r25, r31
+     b42:	30 f4       	brcc	.+12     	; 0xb50 <main+0x2e6>
+			VoltageRPT++;
+     b44:	01 96       	adiw	r24, 0x01	; 1
+     b46:	90 93 98 00 	sts	0x0098, r25
+     b4a:	80 93 97 00 	sts	0x0097, r24
+     b4e:	04 c0       	rjmp	.+8      	; 0xb58 <main+0x2ee>
+		else
+			VoltageRPT = 0;
+     b50:	10 92 98 00 	sts	0x0098, r1
+     b54:	10 92 97 00 	sts	0x0097, r1
+		/////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		if( UART_DataIsReady() ){
+     b58:	3e d3       	rcall	.+1660   	; 0x11d6 <_Z16UART_DataIsReadyv>
+     b5a:	88 23       	and	r24, r24
+     b5c:	09 f4       	brne	.+2      	; 0xb60 <main+0x2f6>
+     b5e:	c4 ce       	rjmp	.-632    	; 0x8e8 <main+0x7e>
+			char cmd = UART_Read();
+     b60:	34 d3       	rcall	.+1640   	; 0x11ca <_Z9UART_Readv>
+			// test cmd
+			if( cmd == 0x01 ){
+     b62:	81 30       	cpi	r24, 0x01	; 1
+     b64:	19 f4       	brne	.+6      	; 0xb6c <main+0x302>
+				UART_Write(0xFE);
+     b66:	8e ef       	ldi	r24, 0xFE	; 254
+     b68:	1e d3       	rcall	.+1596   	; 0x11a6 <_Z10UART_Writeh>
+     b6a:	be ce       	rjmp	.-644    	; 0x8e8 <main+0x7e>
+			}
+			else if(cmd == 0x02){
+     b6c:	82 30       	cpi	r24, 0x02	; 2
+     b6e:	19 f4       	brne	.+6      	; 0xb76 <main+0x30c>
+				report1 = false;//T1.disable();
+     b70:	10 92 93 00 	sts	0x0093, r1
+     b74:	b9 ce       	rjmp	.-654    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x03){
+     b76:	83 30       	cpi	r24, 0x03	; 3
+     b78:	19 f4       	brne	.+6      	; 0xb80 <main+0x316>
+				report1 = true;//T1.enable();
+     b7a:	90 92 93 00 	sts	0x0093, r9
+     b7e:	b4 ce       	rjmp	.-664    	; 0x8e8 <main+0x7e>
+			}
+			
+			
+			else if(cmd == 0x10) _timer = 0;
+     b80:	80 31       	cpi	r24, 0x10	; 16
+     b82:	19 f4       	brne	.+6      	; 0xb8a <main+0x320>
+     b84:	10 92 88 00 	sts	0x0088, r1
+     b88:	af ce       	rjmp	.-674    	; 0x8e8 <main+0x7e>
+			else if( cmd == 0x11) _timer = 1;
+     b8a:	81 31       	cpi	r24, 0x11	; 17
+     b8c:	19 f4       	brne	.+6      	; 0xb94 <main+0x32a>
+     b8e:	90 92 88 00 	sts	0x0088, r9
+     b92:	aa ce       	rjmp	.-684    	; 0x8e8 <main+0x7e>
+			else if( cmd == 0x12){	// Set Time for blinking
+     b94:	82 31       	cpi	r24, 0x12	; 18
+     b96:	51 f4       	brne	.+20     	; 0xbac <main+0x342>
+				while(!UART_DataIsReady());
+     b98:	1e d3       	rcall	.+1596   	; 0x11d6 <_Z16UART_DataIsReadyv>
+     b9a:	88 23       	and	r24, r24
+     b9c:	e9 f3       	breq	.-6      	; 0xb98 <main+0x32e>
+				timer = UART_Read();
+     b9e:	15 d3       	rcall	.+1578   	; 0x11ca <_Z9UART_Readv>
+     ba0:	80 93 60 00 	sts	0x0060, r24
+				UART_Print("timer");
+     ba4:	8f e7       	ldi	r24, 0x7F	; 127
+     ba6:	90 e0       	ldi	r25, 0x00	; 0
+     ba8:	02 d3       	rcall	.+1540   	; 0x11ae <_Z10UART_PrintPKc>
+     baa:	9e ce       	rjmp	.-708    	; 0x8e8 <main+0x7e>
+			}
+			
+			else if( cmd == 0x20 ){
+     bac:	80 32       	cpi	r24, 0x20	; 32
+     bae:	11 f4       	brne	.+4      	; 0xbb4 <main+0x34a>
+				UART_Write(0x20);
+     bb0:	fa d2       	rcall	.+1524   	; 0x11a6 <_Z10UART_Writeh>
+     bb2:	9a ce       	rjmp	.-716    	; 0x8e8 <main+0x7e>
+			}
+			
+			else if( cmd == 0x30 ){
+     bb4:	80 33       	cpi	r24, 0x30	; 48
+     bb6:	39 f4       	brne	.+14     	; 0xbc6 <main+0x35c>
+				MotorR.clear();
+     bb8:	8f ef       	ldi	r24, 0xFF	; 255
+     bba:	90 e0       	ldi	r25, 0x00	; 0
+     bbc:	39 d1       	rcall	.+626    	; 0xe30 <_ZN7Digital5clearEv>
+				MotorL.clear();
+     bbe:	87 ef       	ldi	r24, 0xF7	; 247
+     bc0:	90 e0       	ldi	r25, 0x00	; 0
+     bc2:	36 d1       	rcall	.+620    	; 0xe30 <_ZN7Digital5clearEv>
+     bc4:	91 ce       	rjmp	.-734    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x31){
+     bc6:	81 33       	cpi	r24, 0x31	; 49
+     bc8:	39 f4       	brne	.+14     	; 0xbd8 <main+0x36e>
+				MotorR.set();
+     bca:	8f ef       	ldi	r24, 0xFF	; 255
+     bcc:	90 e0       	ldi	r25, 0x00	; 0
+     bce:	1d d1       	rcall	.+570    	; 0xe0a <_ZN7Digital3setEv>
+				MotorL.set();
+     bd0:	87 ef       	ldi	r24, 0xF7	; 247
+     bd2:	90 e0       	ldi	r25, 0x00	; 0
+     bd4:	1a d1       	rcall	.+564    	; 0xe0a <_ZN7Digital3setEv>
+     bd6:	88 ce       	rjmp	.-752    	; 0x8e8 <main+0x7e>
+			}
+			
+			else if( cmd == 0x40){
+     bd8:	80 34       	cpi	r24, 0x40	; 64
+     bda:	e1 f4       	brne	.+56     	; 0xc14 <main+0x3aa>
+				UART_Print(IntToStr(ArawValue[0])); UART_Print("\t");
+     bdc:	f1 01       	movw	r30, r2
+     bde:	80 81       	ld	r24, Z
+     be0:	90 e0       	ldi	r25, 0x00	; 0
+     be2:	77 dc       	rcall	.-1810   	; 0x4d2 <_Z8IntToStri>
+     be4:	e4 d2       	rcall	.+1480   	; 0x11ae <_Z10UART_PrintPKc>
+     be6:	81 e6       	ldi	r24, 0x61	; 97
+     be8:	90 e0       	ldi	r25, 0x00	; 0
+     bea:	e1 d2       	rcall	.+1474   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print(IntToStr(ArawValue[6])); UART_Print("\t");
+     bec:	f2 01       	movw	r30, r4
+     bee:	80 81       	ld	r24, Z
+     bf0:	90 e0       	ldi	r25, 0x00	; 0
+     bf2:	6f dc       	rcall	.-1826   	; 0x4d2 <_Z8IntToStri>
+     bf4:	dc d2       	rcall	.+1464   	; 0x11ae <_Z10UART_PrintPKc>
+     bf6:	81 e6       	ldi	r24, 0x61	; 97
+     bf8:	90 e0       	ldi	r25, 0x00	; 0
+     bfa:	d9 d2       	rcall	.+1458   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print(IntToStr(ArawValue[7])); UART_Print("\t");
+     bfc:	f3 01       	movw	r30, r6
+     bfe:	80 81       	ld	r24, Z
+     c00:	90 e0       	ldi	r25, 0x00	; 0
+     c02:	67 dc       	rcall	.-1842   	; 0x4d2 <_Z8IntToStri>
+     c04:	d4 d2       	rcall	.+1448   	; 0x11ae <_Z10UART_PrintPKc>
+     c06:	81 e6       	ldi	r24, 0x61	; 97
+     c08:	90 e0       	ldi	r25, 0x00	; 0
+     c0a:	d1 d2       	rcall	.+1442   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print("\n");
+     c0c:	8d e7       	ldi	r24, 0x7D	; 125
+     c0e:	90 e0       	ldi	r25, 0x00	; 0
+     c10:	ce d2       	rcall	.+1436   	; 0x11ae <_Z10UART_PrintPKc>
+     c12:	6a ce       	rjmp	.-812    	; 0x8e8 <main+0x7e>
+			}
+			
+			else if( cmd == 0x50 ){
+     c14:	80 35       	cpi	r24, 0x50	; 80
+     c16:	21 f4       	brne	.+8      	; 0xc20 <main+0x3b6>
+				DlightFront.clear();
+     c18:	8f e1       	ldi	r24, 0x1F	; 31
+     c1a:	91 e0       	ldi	r25, 0x01	; 1
+     c1c:	09 d1       	rcall	.+530    	; 0xe30 <_ZN7Digital5clearEv>
+     c1e:	64 ce       	rjmp	.-824    	; 0x8e8 <main+0x7e>
+				
+			}
+			else if( cmd == 0x51){
+     c20:	81 35       	cpi	r24, 0x51	; 81
+     c22:	21 f4       	brne	.+8      	; 0xc2c <main+0x3c2>
+				DlightFront.set();
+     c24:	8f e1       	ldi	r24, 0x1F	; 31
+     c26:	91 e0       	ldi	r25, 0x01	; 1
+     c28:	f0 d0       	rcall	.+480    	; 0xe0a <_ZN7Digital3setEv>
+     c2a:	5e ce       	rjmp	.-836    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x52){
+     c2c:	82 35       	cpi	r24, 0x52	; 82
+     c2e:	49 f4       	brne	.+18     	; 0xc42 <main+0x3d8>
+				while(!UART_DataIsReady());
+     c30:	d2 d2       	rcall	.+1444   	; 0x11d6 <_Z16UART_DataIsReadyv>
+     c32:	88 23       	and	r24, r24
+     c34:	e9 f3       	breq	.-6      	; 0xc30 <main+0x3c6>
+				uint8_t param1 = UART_Read();
+     c36:	c9 d2       	rcall	.+1426   	; 0x11ca <_Z9UART_Readv>
+				lamp.setPWM(param1);
+     c38:	68 2f       	mov	r22, r24
+     c3a:	8e ea       	ldi	r24, 0xAE	; 174
+     c3c:	90 e0       	ldi	r25, 0x00	; 0
+     c3e:	4e d2       	rcall	.+1180   	; 0x10dc <_ZN3PWM6setPWMEh>
+     c40:	53 ce       	rjmp	.-858    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x53 ){
+     c42:	83 35       	cpi	r24, 0x53	; 83
+     c44:	61 f4       	brne	.+24     	; 0xc5e <main+0x3f4>
+				if( testbit(stsLamps,0) ) clearbit(stsLamps, 0);
+     c46:	80 91 94 00 	lds	r24, 0x0094
+     c4a:	80 ff       	sbrs	r24, 0
+     c4c:	04 c0       	rjmp	.+8      	; 0xc56 <main+0x3ec>
+     c4e:	8e 7f       	andi	r24, 0xFE	; 254
+     c50:	80 93 94 00 	sts	0x0094, r24
+     c54:	49 ce       	rjmp	.-878    	; 0x8e8 <main+0x7e>
+				else setbit(stsLamps, 0);
+     c56:	81 60       	ori	r24, 0x01	; 1
+     c58:	80 93 94 00 	sts	0x0094, r24
+     c5c:	45 ce       	rjmp	.-886    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x54 ){
+     c5e:	84 35       	cpi	r24, 0x54	; 84
+     c60:	61 f4       	brne	.+24     	; 0xc7a <main+0x410>
+				if( testbit(stsLamps,1) ) clearbit(stsLamps, 1);
+     c62:	80 91 94 00 	lds	r24, 0x0094
+     c66:	81 ff       	sbrs	r24, 1
+     c68:	04 c0       	rjmp	.+8      	; 0xc72 <main+0x408>
+     c6a:	8d 7f       	andi	r24, 0xFD	; 253
+     c6c:	80 93 94 00 	sts	0x0094, r24
+     c70:	3b ce       	rjmp	.-906    	; 0x8e8 <main+0x7e>
+				else setbit(stsLamps, 1);
+     c72:	82 60       	ori	r24, 0x02	; 2
+     c74:	80 93 94 00 	sts	0x0094, r24
+     c78:	37 ce       	rjmp	.-914    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x55 ){
+     c7a:	85 35       	cpi	r24, 0x55	; 85
+     c7c:	51 f4       	brne	.+20     	; 0xc92 <main+0x428>
+				UART_Print(IntToStr(AbuttonsPanel.rawValue())); UART_Print("\n");
+     c7e:	84 ed       	ldi	r24, 0xD4	; 212
+     c80:	90 e0       	ldi	r25, 0x00	; 0
+     c82:	01 da       	rcall	.-3070   	; 0x86 <_ZN6Analog8rawValueEv>
+     c84:	90 e0       	ldi	r25, 0x00	; 0
+     c86:	25 dc       	rcall	.-1974   	; 0x4d2 <_Z8IntToStri>
+     c88:	92 d2       	rcall	.+1316   	; 0x11ae <_Z10UART_PrintPKc>
+     c8a:	8d e7       	ldi	r24, 0x7D	; 125
+     c8c:	90 e0       	ldi	r25, 0x00	; 0
+     c8e:	8f d2       	rcall	.+1310   	; 0x11ae <_Z10UART_PrintPKc>
+     c90:	2b ce       	rjmp	.-938    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x56 ){
+     c92:	86 35       	cpi	r24, 0x56	; 86
+     c94:	89 f4       	brne	.+34     	; 0xcb8 <main+0x44e>
+				UART_Print(IntToStr(keyLeft.duration)); UART_Print("\t");
+     c96:	f8 01       	movw	r30, r16
+     c98:	80 81       	ld	r24, Z
+     c9a:	91 81       	ldd	r25, Z+1	; 0x01
+     c9c:	1a dc       	rcall	.-1996   	; 0x4d2 <_Z8IntToStri>
+     c9e:	87 d2       	rcall	.+1294   	; 0x11ae <_Z10UART_PrintPKc>
+     ca0:	81 e6       	ldi	r24, 0x61	; 97
+     ca2:	90 e0       	ldi	r25, 0x00	; 0
+     ca4:	84 d2       	rcall	.+1288   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print(IntToStr(keyRigh.duration)); UART_Print("\n");
+     ca6:	f7 01       	movw	r30, r14
+     ca8:	80 81       	ld	r24, Z
+     caa:	91 81       	ldd	r25, Z+1	; 0x01
+     cac:	12 dc       	rcall	.-2012   	; 0x4d2 <_Z8IntToStri>
+     cae:	7f d2       	rcall	.+1278   	; 0x11ae <_Z10UART_PrintPKc>
+     cb0:	8d e7       	ldi	r24, 0x7D	; 125
+     cb2:	90 e0       	ldi	r25, 0x00	; 0
+     cb4:	7c d2       	rcall	.+1272   	; 0x11ae <_Z10UART_PrintPKc>
+     cb6:	18 ce       	rjmp	.-976    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x57 ){
+     cb8:	87 35       	cpi	r24, 0x57	; 87
+     cba:	39 f4       	brne	.+14     	; 0xcca <main+0x460>
+				keyLeft.release();
+     cbc:	8a ea       	ldi	r24, 0xAA	; 170
+     cbe:	90 e0       	ldi	r25, 0x00	; 0
+     cc0:	d2 d1       	rcall	.+932    	; 0x1066 <_ZN8KeyInput7releaseEv>
+				keyRigh.release();
+     cc2:	86 ea       	ldi	r24, 0xA6	; 166
+     cc4:	90 e0       	ldi	r25, 0x00	; 0
+     cc6:	cf d1       	rcall	.+926    	; 0x1066 <_ZN8KeyInput7releaseEv>
+     cc8:	0f ce       	rjmp	.-994    	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x58){
+     cca:	88 35       	cpi	r24, 0x58	; 88
+     ccc:	21 f4       	brne	.+8      	; 0xcd6 <main+0x46c>
+				lamp.enable();
+     cce:	8e ea       	ldi	r24, 0xAE	; 174
+     cd0:	90 e0       	ldi	r25, 0x00	; 0
+     cd2:	d6 d1       	rcall	.+940    	; 0x1080 <_ZN3PWM6enableEv>
+     cd4:	09 ce       	rjmp	.-1006   	; 0x8e8 <main+0x7e>
+				
+			}
+			
+			
+			
+			else if( cmd == 0x60 ){
+     cd6:	80 36       	cpi	r24, 0x60	; 96
+     cd8:	81 f4       	brne	.+32     	; 0xcfa <main+0x490>
+				uint16_t volts = ArawValue[5];
+     cda:	a8 80       	ld	r10, Y
+     cdc:	b1 2c       	mov	r11, r1
+				volts *= VOLT_CONVERSION;
+				UART_Print("\n");
+     cde:	8d e7       	ldi	r24, 0x7D	; 125
+     ce0:	90 e0       	ldi	r25, 0x00	; 0
+     ce2:	65 d2       	rcall	.+1226   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print(IntToStr(volts));
+     ce4:	8a 9c       	mul	r8, r10
+     ce6:	c0 01       	movw	r24, r0
+     ce8:	8b 9c       	mul	r8, r11
+     cea:	90 0d       	add	r25, r0
+     cec:	11 24       	eor	r1, r1
+     cee:	f1 db       	rcall	.-2078   	; 0x4d2 <_Z8IntToStri>
+     cf0:	5e d2       	rcall	.+1212   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print("\n");
+     cf2:	8d e7       	ldi	r24, 0x7D	; 125
+     cf4:	90 e0       	ldi	r25, 0x00	; 0
+     cf6:	5b d2       	rcall	.+1206   	; 0x11ae <_Z10UART_PrintPKc>
+     cf8:	f7 cd       	rjmp	.-1042   	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x61){
+     cfa:	81 36       	cpi	r24, 0x61	; 97
+     cfc:	19 f4       	brne	.+6      	; 0xd04 <main+0x49a>
+				Functions(0x10);
+     cfe:	80 e1       	ldi	r24, 0x10	; 16
+     d00:	34 dd       	rcall	.-1432   	; 0x76a <_Z9Functionsh>
+     d02:	f2 cd       	rjmp	.-1052   	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x62 ){
+     d04:	82 36       	cpi	r24, 0x62	; 98
+     d06:	19 f4       	brne	.+6      	; 0xd0e <main+0x4a4>
+				Functions(0x11);
+     d08:	81 e1       	ldi	r24, 0x11	; 17
+     d0a:	2f dd       	rcall	.-1442   	; 0x76a <_Z9Functionsh>
+     d0c:	ed cd       	rjmp	.-1062   	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x63 ){
+     d0e:	83 36       	cpi	r24, 0x63	; 99
+     d10:	89 f4       	brne	.+34     	; 0xd34 <main+0x4ca>
+				 UART_Print(IntToStr(keyIgnitionP1)); UART_Print("\n");
+     d12:	80 91 9c 00 	lds	r24, 0x009C
+     d16:	90 e0       	ldi	r25, 0x00	; 0
+     d18:	dc db       	rcall	.-2120   	; 0x4d2 <_Z8IntToStri>
+     d1a:	49 d2       	rcall	.+1170   	; 0x11ae <_Z10UART_PrintPKc>
+     d1c:	8d e7       	ldi	r24, 0x7D	; 125
+     d1e:	90 e0       	ldi	r25, 0x00	; 0
+     d20:	46 d2       	rcall	.+1164   	; 0x11ae <_Z10UART_PrintPKc>
+				 UART_Print(IntToStr(keyIgnitionP2)); UART_Print("\n");
+     d22:	80 91 9b 00 	lds	r24, 0x009B
+     d26:	90 e0       	ldi	r25, 0x00	; 0
+     d28:	d4 db       	rcall	.-2136   	; 0x4d2 <_Z8IntToStri>
+     d2a:	41 d2       	rcall	.+1154   	; 0x11ae <_Z10UART_PrintPKc>
+     d2c:	8d e7       	ldi	r24, 0x7D	; 125
+     d2e:	90 e0       	ldi	r25, 0x00	; 0
+     d30:	3e d2       	rcall	.+1148   	; 0x11ae <_Z10UART_PrintPKc>
+     d32:	da cd       	rjmp	.-1100   	; 0x8e8 <main+0x7e>
+			}
+			
+			else if( cmd == 0x70){
+     d34:	80 37       	cpi	r24, 0x70	; 112
+     d36:	79 f4       	brne	.+30     	; 0xd56 <main+0x4ec>
+				while(!UART_DataIsReady());
+     d38:	4e d2       	rcall	.+1180   	; 0x11d6 <_Z16UART_DataIsReadyv>
+     d3a:	88 23       	and	r24, r24
+     d3c:	e9 f3       	breq	.-6      	; 0xd38 <main+0x4ce>
+				uint8_t value = UART_Read();
+     d3e:	45 d2       	rcall	.+1162   	; 0x11ca <_Z9UART_Readv>
+				UART_Print(IntToStr(Athrottle.calcExp(value)));
+     d40:	68 2f       	mov	r22, r24
+     d42:	88 ee       	ldi	r24, 0xE8	; 232
+     d44:	90 e0       	ldi	r25, 0x00	; 0
+     d46:	f5 d9       	rcall	.-3094   	; 0x132 <_ZN9AnalogExp7calcExpEh>
+     d48:	90 e0       	ldi	r25, 0x00	; 0
+     d4a:	c3 db       	rcall	.-2170   	; 0x4d2 <_Z8IntToStri>
+     d4c:	30 d2       	rcall	.+1120   	; 0x11ae <_Z10UART_PrintPKc>
+				UART_Print("\n");
+     d4e:	8d e7       	ldi	r24, 0x7D	; 125
+     d50:	90 e0       	ldi	r25, 0x00	; 0
+     d52:	2d d2       	rcall	.+1114   	; 0x11ae <_Z10UART_PrintPKc>
+     d54:	c9 cd       	rjmp	.-1134   	; 0x8e8 <main+0x7e>
+			}
+			else if( cmd == 0x71){
+     d56:	81 37       	cpi	r24, 0x71	; 113
+     d58:	09 f0       	breq	.+2      	; 0xd5c <main+0x4f2>
+     d5a:	c6 cd       	rjmp	.-1140   	; 0x8e8 <main+0x7e>
+				 UART_Print(IntToStr(Athrottle.getMinRange())); UART_Print(", ");
+     d5c:	88 ee       	ldi	r24, 0xE8	; 232
+     d5e:	90 e0       	ldi	r25, 0x00	; 0
+     d60:	d3 d9       	rcall	.-3162   	; 0x108 <_ZN6Analog11getMinRangeEv>
+     d62:	90 e0       	ldi	r25, 0x00	; 0
+     d64:	b6 db       	rcall	.-2196   	; 0x4d2 <_Z8IntToStri>
+     d66:	23 d2       	rcall	.+1094   	; 0x11ae <_Z10UART_PrintPKc>
+     d68:	85 e8       	ldi	r24, 0x85	; 133
+     d6a:	90 e0       	ldi	r25, 0x00	; 0
+     d6c:	20 d2       	rcall	.+1088   	; 0x11ae <_Z10UART_PrintPKc>
+				 UART_Print(IntToStr(Athrottle.getMaxRange())); UART_Print(", ");
+     d6e:	88 ee       	ldi	r24, 0xE8	; 232
+     d70:	90 e0       	ldi	r25, 0x00	; 0
+     d72:	cd d9       	rcall	.-3174   	; 0x10e <_ZN6Analog11getMaxRangeEv>
+     d74:	90 e0       	ldi	r25, 0x00	; 0
+     d76:	ad db       	rcall	.-2214   	; 0x4d2 <_Z8IntToStri>
+     d78:	1a d2       	rcall	.+1076   	; 0x11ae <_Z10UART_PrintPKc>
+     d7a:	85 e8       	ldi	r24, 0x85	; 133
+     d7c:	90 e0       	ldi	r25, 0x00	; 0
+     d7e:	17 d2       	rcall	.+1070   	; 0x11ae <_Z10UART_PrintPKc>
+				 UART_Print(IntToStr(Athrottle.Value())); UART_Print(", ");
+     d80:	88 ee       	ldi	r24, 0xE8	; 232
+     d82:	90 e0       	ldi	r25, 0x00	; 0
+     d84:	a7 d9       	rcall	.-3250   	; 0xd4 <_ZN6Analog5ValueEv>
+     d86:	90 e0       	ldi	r25, 0x00	; 0
+     d88:	a4 db       	rcall	.-2232   	; 0x4d2 <_Z8IntToStri>
+     d8a:	11 d2       	rcall	.+1058   	; 0x11ae <_Z10UART_PrintPKc>
+     d8c:	85 e8       	ldi	r24, 0x85	; 133
+     d8e:	90 e0       	ldi	r25, 0x00	; 0
+     d90:	0e d2       	rcall	.+1052   	; 0x11ae <_Z10UART_PrintPKc>
+				 UART_Print("\n");
+     d92:	8d e7       	ldi	r24, 0x7D	; 125
+     d94:	90 e0       	ldi	r25, 0x00	; 0
+     d96:	0b d2       	rcall	.+1046   	; 0x11ae <_Z10UART_PrintPKc>
+     d98:	a7 cd       	rjmp	.-1202   	; 0x8e8 <main+0x7e>
+
+00000d9a <_GLOBAL__sub_I_DlightFront>:
+			}
+			
+			
+		}
+    }
+     d9a:	6f ef       	ldi	r22, 0xFF	; 255
+     d9c:	7f ef       	ldi	r23, 0xFF	; 255
+     d9e:	81 e0       	ldi	r24, 0x01	; 1
+     da0:	90 e0       	ldi	r25, 0x00	; 0
+     da2:	e0 da       	rcall	.-2624   	; 0x364 <_Z41__static_initialization_and_destruction_0ii>
+     da4:	08 95       	ret
+
+00000da6 <_GLOBAL__sub_D_DlightFront>:
+     da6:	6f ef       	ldi	r22, 0xFF	; 255
+     da8:	7f ef       	ldi	r23, 0xFF	; 255
+     daa:	80 e0       	ldi	r24, 0x00	; 0
+     dac:	90 e0       	ldi	r25, 0x00	; 0
+     dae:	da da       	rcall	.-2636   	; 0x364 <_Z41__static_initialization_and_destruction_0ii>
+     db0:	08 95       	ret
+
+00000db2 <_ZN7DigitalC1EPVhh4MODE>:
+     db2:	fc 01       	movw	r30, r24
+     db4:	46 83       	std	Z+6, r20	; 0x06
+     db6:	27 83       	std	Z+7, r18	; 0x07
+     db8:	71 83       	std	Z+1, r23	; 0x01
+     dba:	60 83       	st	Z, r22
+     dbc:	cb 01       	movw	r24, r22
+     dbe:	01 97       	sbiw	r24, 0x01	; 1
+     dc0:	93 83       	std	Z+3, r25	; 0x03
+     dc2:	82 83       	std	Z+2, r24	; 0x02
+     dc4:	cb 01       	movw	r24, r22
+     dc6:	02 97       	sbiw	r24, 0x02	; 2
+     dc8:	95 83       	std	Z+5, r25	; 0x05
+     dca:	84 83       	std	Z+4, r24	; 0x04
+     dcc:	22 23       	and	r18, r18
+     dce:	71 f0       	breq	.+28     	; 0xdec <_ZN7DigitalC1EPVhh4MODE+0x3a>
+     dd0:	fb 01       	movw	r30, r22
+     dd2:	22 91       	ld	r18, -Z
+     dd4:	81 e0       	ldi	r24, 0x01	; 1
+     dd6:	90 e0       	ldi	r25, 0x00	; 0
+     dd8:	bc 01       	movw	r22, r24
+     dda:	02 c0       	rjmp	.+4      	; 0xde0 <_ZN7DigitalC1EPVhh4MODE+0x2e>
+     ddc:	66 0f       	add	r22, r22
+     dde:	77 1f       	adc	r23, r23
+     de0:	4a 95       	dec	r20
+     de2:	e2 f7       	brpl	.-8      	; 0xddc <_ZN7DigitalC1EPVhh4MODE+0x2a>
+     de4:	ab 01       	movw	r20, r22
+     de6:	42 2b       	or	r20, r18
+     de8:	40 83       	st	Z, r20
+     dea:	08 95       	ret
+     dec:	fb 01       	movw	r30, r22
+     dee:	22 91       	ld	r18, -Z
+     df0:	81 e0       	ldi	r24, 0x01	; 1
+     df2:	90 e0       	ldi	r25, 0x00	; 0
+     df4:	bc 01       	movw	r22, r24
+     df6:	02 c0       	rjmp	.+4      	; 0xdfc <_ZN7DigitalC1EPVhh4MODE+0x4a>
+     df8:	66 0f       	add	r22, r22
+     dfa:	77 1f       	adc	r23, r23
+     dfc:	4a 95       	dec	r20
+     dfe:	e2 f7       	brpl	.-8      	; 0xdf8 <_ZN7DigitalC1EPVhh4MODE+0x46>
+     e00:	ab 01       	movw	r20, r22
+     e02:	40 95       	com	r20
+     e04:	42 23       	and	r20, r18
+     e06:	40 83       	st	Z, r20
+     e08:	08 95       	ret
+
+00000e0a <_ZN7Digital3setEv>:
+     e0a:	dc 01       	movw	r26, r24
+     e0c:	ed 91       	ld	r30, X+
+     e0e:	fc 91       	ld	r31, X
+     e10:	11 97       	sbiw	r26, 0x01	; 1
+     e12:	40 81       	ld	r20, Z
+     e14:	21 e0       	ldi	r18, 0x01	; 1
+     e16:	30 e0       	ldi	r19, 0x00	; 0
+     e18:	b9 01       	movw	r22, r18
+     e1a:	16 96       	adiw	r26, 0x06	; 6
+     e1c:	0c 90       	ld	r0, X
+     e1e:	02 c0       	rjmp	.+4      	; 0xe24 <_ZN7Digital3setEv+0x1a>
+     e20:	66 0f       	add	r22, r22
+     e22:	77 1f       	adc	r23, r23
+     e24:	0a 94       	dec	r0
+     e26:	e2 f7       	brpl	.-8      	; 0xe20 <_ZN7Digital3setEv+0x16>
+     e28:	cb 01       	movw	r24, r22
+     e2a:	84 2b       	or	r24, r20
+     e2c:	80 83       	st	Z, r24
+     e2e:	08 95       	ret
+
+00000e30 <_ZN7Digital5clearEv>:
+     e30:	dc 01       	movw	r26, r24
+     e32:	ed 91       	ld	r30, X+
+     e34:	fc 91       	ld	r31, X
+     e36:	11 97       	sbiw	r26, 0x01	; 1
+     e38:	40 81       	ld	r20, Z
+     e3a:	21 e0       	ldi	r18, 0x01	; 1
+     e3c:	30 e0       	ldi	r19, 0x00	; 0
+     e3e:	b9 01       	movw	r22, r18
+     e40:	16 96       	adiw	r26, 0x06	; 6
+     e42:	0c 90       	ld	r0, X
+     e44:	02 c0       	rjmp	.+4      	; 0xe4a <_ZN7Digital5clearEv+0x1a>
+     e46:	66 0f       	add	r22, r22
+     e48:	77 1f       	adc	r23, r23
+     e4a:	0a 94       	dec	r0
+     e4c:	e2 f7       	brpl	.-8      	; 0xe46 <_ZN7Digital5clearEv+0x16>
+     e4e:	cb 01       	movw	r24, r22
+     e50:	80 95       	com	r24
+     e52:	84 23       	and	r24, r20
+     e54:	80 83       	st	Z, r24
+     e56:	08 95       	ret
+
+00000e58 <_ZN7Digital6toogleEv>:
+     e58:	dc 01       	movw	r26, r24
+     e5a:	ed 91       	ld	r30, X+
+     e5c:	fc 91       	ld	r31, X
+     e5e:	11 97       	sbiw	r26, 0x01	; 1
+     e60:	20 81       	ld	r18, Z
+     e62:	16 96       	adiw	r26, 0x06	; 6
+     e64:	4c 91       	ld	r20, X
+     e66:	82 2f       	mov	r24, r18
+     e68:	90 e0       	ldi	r25, 0x00	; 0
+     e6a:	04 2e       	mov	r0, r20
+     e6c:	02 c0       	rjmp	.+4      	; 0xe72 <_ZN7Digital6toogleEv+0x1a>
+     e6e:	95 95       	asr	r25
+     e70:	87 95       	ror	r24
+     e72:	0a 94       	dec	r0
+     e74:	e2 f7       	brpl	.-8      	; 0xe6e <_ZN7Digital6toogleEv+0x16>
+     e76:	80 ff       	sbrs	r24, 0
+     e78:	0d c0       	rjmp	.+26     	; 0xe94 <_ZN7Digital6toogleEv+0x3c>
+     e7a:	50 81       	ld	r21, Z
+     e7c:	21 e0       	ldi	r18, 0x01	; 1
+     e7e:	30 e0       	ldi	r19, 0x00	; 0
+     e80:	c9 01       	movw	r24, r18
+     e82:	02 c0       	rjmp	.+4      	; 0xe88 <_ZN7Digital6toogleEv+0x30>
+     e84:	88 0f       	add	r24, r24
+     e86:	99 1f       	adc	r25, r25
+     e88:	4a 95       	dec	r20
+     e8a:	e2 f7       	brpl	.-8      	; 0xe84 <_ZN7Digital6toogleEv+0x2c>
+     e8c:	80 95       	com	r24
+     e8e:	85 23       	and	r24, r21
+     e90:	80 83       	st	Z, r24
+     e92:	08 95       	ret
+     e94:	50 81       	ld	r21, Z
+     e96:	21 e0       	ldi	r18, 0x01	; 1
+     e98:	30 e0       	ldi	r19, 0x00	; 0
+     e9a:	c9 01       	movw	r24, r18
+     e9c:	02 c0       	rjmp	.+4      	; 0xea2 <_ZN7Digital6toogleEv+0x4a>
+     e9e:	88 0f       	add	r24, r24
+     ea0:	99 1f       	adc	r25, r25
+     ea2:	4a 95       	dec	r20
+     ea4:	e2 f7       	brpl	.-8      	; 0xe9e <_ZN7Digital6toogleEv+0x46>
+     ea6:	85 2b       	or	r24, r21
+     ea8:	80 83       	st	Z, r24
+     eaa:	08 95       	ret
+
+00000eac <_ZN7Digital5writeEb>:
+     eac:	66 23       	and	r22, r22
+     eae:	99 f0       	breq	.+38     	; 0xed6 <_ZN7Digital5writeEb+0x2a>
+     eb0:	dc 01       	movw	r26, r24
+     eb2:	ed 91       	ld	r30, X+
+     eb4:	fc 91       	ld	r31, X
+     eb6:	11 97       	sbiw	r26, 0x01	; 1
+     eb8:	40 81       	ld	r20, Z
+     eba:	21 e0       	ldi	r18, 0x01	; 1
+     ebc:	30 e0       	ldi	r19, 0x00	; 0
+     ebe:	b9 01       	movw	r22, r18
+     ec0:	16 96       	adiw	r26, 0x06	; 6
+     ec2:	0c 90       	ld	r0, X
+     ec4:	02 c0       	rjmp	.+4      	; 0xeca <_ZN7Digital5writeEb+0x1e>
+     ec6:	66 0f       	add	r22, r22
+     ec8:	77 1f       	adc	r23, r23
+     eca:	0a 94       	dec	r0
+     ecc:	e2 f7       	brpl	.-8      	; 0xec6 <_ZN7Digital5writeEb+0x1a>
+     ece:	cb 01       	movw	r24, r22
+     ed0:	84 2b       	or	r24, r20
+     ed2:	80 83       	st	Z, r24
+     ed4:	08 95       	ret
+     ed6:	dc 01       	movw	r26, r24
+     ed8:	ed 91       	ld	r30, X+
+     eda:	fc 91       	ld	r31, X
+     edc:	11 97       	sbiw	r26, 0x01	; 1
+     ede:	40 81       	ld	r20, Z
+     ee0:	21 e0       	ldi	r18, 0x01	; 1
+     ee2:	30 e0       	ldi	r19, 0x00	; 0
+     ee4:	b9 01       	movw	r22, r18
+     ee6:	16 96       	adiw	r26, 0x06	; 6
+     ee8:	0c 90       	ld	r0, X
+     eea:	02 c0       	rjmp	.+4      	; 0xef0 <_ZN7Digital5writeEb+0x44>
+     eec:	66 0f       	add	r22, r22
+     eee:	77 1f       	adc	r23, r23
+     ef0:	0a 94       	dec	r0
+     ef2:	e2 f7       	brpl	.-8      	; 0xeec <_ZN7Digital5writeEb+0x40>
+     ef4:	cb 01       	movw	r24, r22
+     ef6:	80 95       	com	r24
+     ef8:	84 23       	and	r24, r20
+     efa:	80 83       	st	Z, r24
+     efc:	08 95       	ret
+
+00000efe <_ZN7Digital4readEv>:
+     efe:	fc 01       	movw	r30, r24
+     f00:	a4 81       	ldd	r26, Z+4	; 0x04
+     f02:	b5 81       	ldd	r27, Z+5	; 0x05
+     f04:	8c 91       	ld	r24, X
+     f06:	90 e0       	ldi	r25, 0x00	; 0
+     f08:	06 80       	ldd	r0, Z+6	; 0x06
+     f0a:	02 c0       	rjmp	.+4      	; 0xf10 <_ZN7Digital4readEv+0x12>
+     f0c:	95 95       	asr	r25
+     f0e:	87 95       	ror	r24
+     f10:	0a 94       	dec	r0
+     f12:	e2 f7       	brpl	.-8      	; 0xf0c <_ZN7Digital4readEv+0xe>
+     f14:	81 70       	andi	r24, 0x01	; 1
+     f16:	08 95       	ret
+
+00000f18 <_ZN7DigitalD1Ev>:
+     f18:	08 95       	ret
+
+00000f1a <_ZN17EngineControlUnitC1EP7DigitalS1_PVh>:
+
+#include "EngineControlUnit.h"
+
+
+// default constructor
+EngineControlUnit::EngineControlUnit(Digital *MotorR, Digital *MotorL, volatile uint8_t *TOCR)
+     f1a:	fc 01       	movw	r30, r24
+{
+	this->MotorR = MotorR;
+     f1c:	71 83       	std	Z+1, r23	; 0x01
+     f1e:	60 83       	st	Z, r22
+	this->MotorL = MotorL;
+     f20:	53 83       	std	Z+3, r21	; 0x03
+     f22:	42 83       	std	Z+2, r20	; 0x02
+	this->TOCR   = TOCR;
+     f24:	33 87       	std	Z+11, r19	; 0x0b
+     f26:	22 87       	std	Z+10, r18	; 0x0a
+	status = STS_IDLE;
+     f28:	14 86       	std	Z+12, r1	; 0x0c
+	maxSPD = 255;
+     f2a:	8f ef       	ldi	r24, 0xFF	; 255
+     f2c:	86 83       	std	Z+6, r24	; 0x06
+	Enabled = true;
+     f2e:	81 e0       	ldi	r24, 0x01	; 1
+     f30:	87 83       	std	Z+7, r24	; 0x07
+     f32:	08 95       	ret
+
+00000f34 <_ZN17EngineControlUnitD1Ev>:
+} //EngineControlUnit
+
+// default destructor
+EngineControlUnit::~EngineControlUnit()
+     f34:	08 95       	ret
+
+00000f36 <_ZN17EngineControlUnit12InterruptOVFEv>:
+{
+} //~EngineControlUnit
+
+
+void EngineControlUnit::InterruptOVF(){
+     f36:	cf 93       	push	r28
+     f38:	df 93       	push	r29
+     f3a:	ec 01       	movw	r28, r24
+	if(Tcounter > 1 )Tcounter--;
+     f3c:	89 85       	ldd	r24, Y+9	; 0x09
+     f3e:	82 30       	cpi	r24, 0x02	; 2
+     f40:	18 f0       	brcs	.+6      	; 0xf48 <_ZN17EngineControlUnit12InterruptOVFEv+0x12>
+     f42:	81 50       	subi	r24, 0x01	; 1
+     f44:	89 87       	std	Y+9, r24	; 0x09
+     f46:	19 c0       	rjmp	.+50     	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+	else{
+		Tcounter = Tacceleration;
+     f48:	8d 81       	ldd	r24, Y+5	; 0x05
+     f4a:	89 87       	std	Y+9, r24	; 0x09
+		
+		if( TargetSPD > ActualSPD )			// Acceleration
+     f4c:	9c 81       	ldd	r25, Y+4	; 0x04
+     f4e:	88 85       	ldd	r24, Y+8	; 0x08
+     f50:	89 17       	cp	r24, r25
+     f52:	18 f4       	brcc	.+6      	; 0xf5a <_ZN17EngineControlUnit12InterruptOVFEv+0x24>
+			ActualSPD++;
+     f54:	8f 5f       	subi	r24, 0xFF	; 255
+     f56:	88 87       	std	Y+8, r24	; 0x08
+     f58:	10 c0       	rjmp	.+32     	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+		else if( TargetSPD < ActualSPD ){	// Deceleration
+     f5a:	98 17       	cp	r25, r24
+     f5c:	70 f4       	brcc	.+28     	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+			if( TargetSPD > 100)			//   slow deceleration 
+     f5e:	95 36       	cpi	r25, 0x65	; 101
+     f60:	18 f0       	brcs	.+6      	; 0xf68 <_ZN17EngineControlUnit12InterruptOVFEv+0x32>
+				ActualSPD--;
+     f62:	81 50       	subi	r24, 0x01	; 1
+     f64:	88 87       	std	Y+8, r24	; 0x08
+     f66:	09 c0       	rjmp	.+18     	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+			else if( TargetSPD > 50)		//   fast decelerate
+     f68:	93 33       	cpi	r25, 0x33	; 51
+     f6a:	20 f0       	brcs	.+8      	; 0xf74 <_ZN17EngineControlUnit12InterruptOVFEv+0x3e>
+				Tcounter = 0, ActualSPD--;
+     f6c:	19 86       	std	Y+9, r1	; 0x09
+     f6e:	81 50       	subi	r24, 0x01	; 1
+     f70:	88 87       	std	Y+8, r24	; 0x08
+     f72:	03 c0       	rjmp	.+6      	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+			else if( TargetSPD < 5 )		//   stop
+     f74:	95 30       	cpi	r25, 0x05	; 5
+     f76:	08 f4       	brcc	.+2      	; 0xf7a <_ZN17EngineControlUnit12InterruptOVFEv+0x44>
+				ActualSPD = TargetSPD;
+     f78:	98 87       	std	Y+8, r25	; 0x08
+		}
+	}
+	
+	if( ActualSPD > 127 ){					// more than 50% pwm
+     f7a:	88 85       	ldd	r24, Y+8	; 0x08
+     f7c:	88 23       	and	r24, r24
+     f7e:	6c f4       	brge	.+26     	; 0xf9a <_ZN17EngineControlUnit12InterruptOVFEv+0x64>
+		MotorR->set();					
+     f80:	88 81       	ld	r24, Y
+     f82:	99 81       	ldd	r25, Y+1	; 0x01
+     f84:	42 df       	rcall	.-380    	; 0xe0a <_ZN7Digital3setEv>
+		MotorL->set();
+     f86:	8a 81       	ldd	r24, Y+2	; 0x02
+     f88:	9b 81       	ldd	r25, Y+3	; 0x03
+     f8a:	3f df       	rcall	.-386    	; 0xe0a <_ZN7Digital3setEv>
+		status = 1<<STS_MRL;				// use both motors
+     f8c:	84 e0       	ldi	r24, 0x04	; 4
+     f8e:	8c 87       	std	Y+12, r24	; 0x0c
+		(*TOCR) = ActualSPD;
+     f90:	ea 85       	ldd	r30, Y+10	; 0x0a
+     f92:	fb 85       	ldd	r31, Y+11	; 0x0b
+     f94:	88 85       	ldd	r24, Y+8	; 0x08
+     f96:	80 83       	st	Z, r24
+     f98:	13 c0       	rjmp	.+38     	; 0xfc0 <_ZN17EngineControlUnit12InterruptOVFEv+0x8a>
+	}
+	else if( ActualSPD > 20){				// minimun of 2% pwm
+     f9a:	85 31       	cpi	r24, 0x15	; 21
+     f9c:	68 f0       	brcs	.+26     	; 0xfb8 <_ZN17EngineControlUnit12InterruptOVFEv+0x82>
+		MotorR->set();					
+     f9e:	88 81       	ld	r24, Y
+     fa0:	99 81       	ldd	r25, Y+1	; 0x01
+     fa2:	33 df       	rcall	.-410    	; 0xe0a <_ZN7Digital3setEv>
+		MotorL->clear();
+     fa4:	8a 81       	ldd	r24, Y+2	; 0x02
+     fa6:	9b 81       	ldd	r25, Y+3	; 0x03
+     fa8:	43 df       	rcall	.-378    	; 0xe30 <_ZN7Digital5clearEv>
+		status = 1<<STS_MR;					// use first motorR
+     faa:	81 e0       	ldi	r24, 0x01	; 1
+     fac:	8c 87       	std	Y+12, r24	; 0x0c
+		(*TOCR) = ActualSPD;
+     fae:	ea 85       	ldd	r30, Y+10	; 0x0a
+     fb0:	fb 85       	ldd	r31, Y+11	; 0x0b
+     fb2:	88 85       	ldd	r24, Y+8	; 0x08
+     fb4:	80 83       	st	Z, r24
+     fb6:	04 c0       	rjmp	.+8      	; 0xfc0 <_ZN17EngineControlUnit12InterruptOVFEv+0x8a>
+	}
+	else{									// less than 2% pwm
+		(*TOCR) = 250;
+     fb8:	ea 85       	ldd	r30, Y+10	; 0x0a
+     fba:	fb 85       	ldd	r31, Y+11	; 0x0b
+     fbc:	8a ef       	ldi	r24, 0xFA	; 250
+     fbe:	80 83       	st	Z, r24
+	}
+}
+     fc0:	df 91       	pop	r29
+     fc2:	cf 91       	pop	r28
+     fc4:	08 95       	ret
+
+00000fc6 <_ZN17EngineControlUnit13InterruptCOMPEv>:
+
+void EngineControlUnit::InterruptCOMP(){
+     fc6:	cf 93       	push	r28
+     fc8:	df 93       	push	r29
+     fca:	ec 01       	movw	r28, r24
+	if( testbit(status, STS_MR) ){			// if using motor R
+     fcc:	8c 85       	ldd	r24, Y+12	; 0x0c
+     fce:	80 ff       	sbrs	r24, 0
+     fd0:	0e c0       	rjmp	.+28     	; 0xfee <_ZN17EngineControlUnit13InterruptCOMPEv+0x28>
+		(*TOCR) = ActualSPD*2;
+     fd2:	ea 85       	ldd	r30, Y+10	; 0x0a
+     fd4:	fb 85       	ldd	r31, Y+11	; 0x0b
+     fd6:	88 85       	ldd	r24, Y+8	; 0x08
+     fd8:	88 0f       	add	r24, r24
+     fda:	80 83       	st	Z, r24
+		MotorR->clear();
+     fdc:	88 81       	ld	r24, Y
+     fde:	99 81       	ldd	r25, Y+1	; 0x01
+     fe0:	27 df       	rcall	.-434    	; 0xe30 <_ZN7Digital5clearEv>
+		MotorL->set();
+     fe2:	8a 81       	ldd	r24, Y+2	; 0x02
+     fe4:	9b 81       	ldd	r25, Y+3	; 0x03
+     fe6:	11 df       	rcall	.-478    	; 0xe0a <_ZN7Digital3setEv>
+		status = 1<<STS_ML;		
+     fe8:	82 e0       	ldi	r24, 0x02	; 2
+     fea:	8c 87       	std	Y+12, r24	; 0x0c
+     fec:	13 c0       	rjmp	.+38     	; 0x1014 <_ZN17EngineControlUnit13InterruptCOMPEv+0x4e>
+	}
+	else if( testbit(status, STS_ML) ){		// if using motor L
+     fee:	81 ff       	sbrs	r24, 1
+     ff0:	05 c0       	rjmp	.+10     	; 0xffc <_ZN17EngineControlUnit13InterruptCOMPEv+0x36>
+		MotorL->clear();
+     ff2:	8a 81       	ldd	r24, Y+2	; 0x02
+     ff4:	9b 81       	ldd	r25, Y+3	; 0x03
+     ff6:	1c df       	rcall	.-456    	; 0xe30 <_ZN7Digital5clearEv>
+		status = STS_IDLE;
+     ff8:	1c 86       	std	Y+12, r1	; 0x0c
+     ffa:	0c c0       	rjmp	.+24     	; 0x1014 <_ZN17EngineControlUnit13InterruptCOMPEv+0x4e>
+	}
+	else if( testbit(status, STS_MRL) ){	// if using motor (R and L)
+     ffc:	82 ff       	sbrs	r24, 2
+     ffe:	0a c0       	rjmp	.+20     	; 0x1014 <_ZN17EngineControlUnit13InterruptCOMPEv+0x4e>
+		if( ActualSPD < 255 ){
+    1000:	88 85       	ldd	r24, Y+8	; 0x08
+    1002:	8f 3f       	cpi	r24, 0xFF	; 255
+    1004:	31 f0       	breq	.+12     	; 0x1012 <_ZN17EngineControlUnit13InterruptCOMPEv+0x4c>
+			MotorR->clear();
+    1006:	88 81       	ld	r24, Y
+    1008:	99 81       	ldd	r25, Y+1	; 0x01
+    100a:	12 df       	rcall	.-476    	; 0xe30 <_ZN7Digital5clearEv>
+			MotorL->clear();
+    100c:	8a 81       	ldd	r24, Y+2	; 0x02
+    100e:	9b 81       	ldd	r25, Y+3	; 0x03
+    1010:	0f df       	rcall	.-482    	; 0xe30 <_ZN7Digital5clearEv>
+		}
+		status = STS_IDLE;
+    1012:	1c 86       	std	Y+12, r1	; 0x0c
+	}
+}
+    1014:	df 91       	pop	r29
+    1016:	cf 91       	pop	r28
+    1018:	08 95       	ret
+
+0000101a <_ZN17EngineControlUnit12setTargetSPDEh>:
+
+void EngineControlUnit::setTargetSPD(uint8_t _TargetSPD){
+    101a:	fc 01       	movw	r30, r24
+	if( _TargetSPD > maxSPD ) TargetSPD = maxSPD;
+    101c:	86 81       	ldd	r24, Z+6	; 0x06
+    101e:	86 17       	cp	r24, r22
+    1020:	10 f4       	brcc	.+4      	; 0x1026 <_ZN17EngineControlUnit12setTargetSPDEh+0xc>
+    1022:	84 83       	std	Z+4, r24	; 0x04
+    1024:	01 c0       	rjmp	.+2      	; 0x1028 <_ZN17EngineControlUnit12setTargetSPDEh+0xe>
+	else TargetSPD = _TargetSPD;
+    1026:	64 83       	std	Z+4, r22	; 0x04
+	if(!Enabled) TargetSPD = 0;
+    1028:	87 81       	ldd	r24, Z+7	; 0x07
+    102a:	81 11       	cpse	r24, r1
+    102c:	01 c0       	rjmp	.+2      	; 0x1030 <_ZN17EngineControlUnit12setTargetSPDEh+0x16>
+    102e:	14 82       	std	Z+4, r1	; 0x04
+    1030:	08 95       	ret
+
+00001032 <_ZN8KeyInputC1Ev>:
+
+
+#include "KeyInput.h"
+
+// default constructor
+KeyInput::KeyInput()
+    1032:	08 95       	ret
+
+00001034 <_ZN8KeyInput7pressUpEv>:
+//KeyInput::~KeyInput()
+//{
+//} //~KeyInput
+
+
+void KeyInput::pressUp(){
+    1034:	fc 01       	movw	r30, r24
+	if( pressing ){
+    1036:	81 81       	ldd	r24, Z+1	; 0x01
+    1038:	88 23       	and	r24, r24
+    103a:	41 f0       	breq	.+16     	; 0x104c <_ZN8KeyInput7pressUpEv+0x18>
+		if( duration > 600 )pressed = true;
+    103c:	82 81       	ldd	r24, Z+2	; 0x02
+    103e:	93 81       	ldd	r25, Z+3	; 0x03
+    1040:	89 35       	cpi	r24, 0x59	; 89
+    1042:	92 40       	sbci	r25, 0x02	; 2
+    1044:	10 f0       	brcs	.+4      	; 0x104a <_ZN8KeyInput7pressUpEv+0x16>
+    1046:	81 e0       	ldi	r24, 0x01	; 1
+    1048:	80 83       	st	Z, r24
+		pressing = false;
+    104a:	11 82       	std	Z+1, r1	; 0x01
+    104c:	08 95       	ret
+
+0000104e <_ZN8KeyInput9pressDownEv>:
+	}
+}
+void KeyInput::pressDown(){
+    104e:	fc 01       	movw	r30, r24
+	if( !pressed ){
+    1050:	80 81       	ld	r24, Z
+    1052:	81 11       	cpse	r24, r1
+    1054:	07 c0       	rjmp	.+14     	; 0x1064 <_ZN8KeyInput9pressDownEv+0x16>
+		pressing = true;
+    1056:	81 e0       	ldi	r24, 0x01	; 1
+    1058:	81 83       	std	Z+1, r24	; 0x01
+		duration++;
+    105a:	82 81       	ldd	r24, Z+2	; 0x02
+    105c:	93 81       	ldd	r25, Z+3	; 0x03
+    105e:	01 96       	adiw	r24, 0x01	; 1
+    1060:	93 83       	std	Z+3, r25	; 0x03
+    1062:	82 83       	std	Z+2, r24	; 0x02
+    1064:	08 95       	ret
+
+00001066 <_ZN8KeyInput7releaseEv>:
+	}
+}
+void KeyInput::release(){
+    1066:	fc 01       	movw	r30, r24
+	if( pressed ){
+    1068:	80 81       	ld	r24, Z
+    106a:	88 23       	and	r24, r24
+    106c:	19 f0       	breq	.+6      	; 0x1074 <_ZN8KeyInput7releaseEv+0xe>
+		pressed = false;
+    106e:	10 82       	st	Z, r1
+		duration = 0;
+    1070:	13 82       	std	Z+3, r1	; 0x03
+    1072:	12 82       	std	Z+2, r1	; 0x02
+    1074:	08 95       	ret
+
+00001076 <_ZN3PWMC1EP7Digital>:
+
+
+// default constructor
+PWM::PWM(Digital *port)
+{
+	this->port = port;
+    1076:	fc 01       	movw	r30, r24
+    1078:	71 83       	std	Z+1, r23	; 0x01
+    107a:	60 83       	st	Z, r22
+    107c:	08 95       	ret
+
+0000107e <_ZN3PWMD1Ev>:
+} //PWM
+
+// default destructor
+PWM::~PWM()
+    107e:	08 95       	ret
+
+00001080 <_ZN3PWM6enableEv>:
+{
+} //~PWM
+
+
+void PWM::enable(){
+	if( Tcounter == 0) Tcounter = 1;
+    1080:	fc 01       	movw	r30, r24
+    1082:	22 81       	ldd	r18, Z+2	; 0x02
+    1084:	21 11       	cpse	r18, r1
+    1086:	02 c0       	rjmp	.+4      	; 0x108c <_ZN3PWM6enableEv+0xc>
+    1088:	21 e0       	ldi	r18, 0x01	; 1
+    108a:	22 83       	std	Z+2, r18	; 0x02
+    108c:	08 95       	ret
+
+0000108e <_ZN3PWM7disableEv>:
+}
+
+void PWM::disable(){
+	Tcounter = 0;
+    108e:	fc 01       	movw	r30, r24
+    1090:	12 82       	std	Z+2, r1	; 0x02
+	port->clear();
+    1092:	80 81       	ld	r24, Z
+    1094:	91 81       	ldd	r25, Z+1	; 0x01
+    1096:	cc de       	rcall	.-616    	; 0xe30 <_ZN7Digital5clearEv>
+    1098:	08 95       	ret
+
+0000109a <_ZN3PWM9isEnabledEv>:
+}
+
+bool PWM::isEnabled(){
+	if( Tcounter )return true;
+    109a:	21 e0       	ldi	r18, 0x01	; 1
+    109c:	fc 01       	movw	r30, r24
+    109e:	82 81       	ldd	r24, Z+2	; 0x02
+    10a0:	81 11       	cpse	r24, r1
+    10a2:	01 c0       	rjmp	.+2      	; 0x10a6 <_ZN3PWM9isEnabledEv+0xc>
+    10a4:	20 e0       	ldi	r18, 0x00	; 0
+	return false;
+}
+    10a6:	82 2f       	mov	r24, r18
+    10a8:	08 95       	ret
+
+000010aa <_ZN3PWM9interruptEv>:
+
+void PWM::interrupt(){
+    10aa:	cf 93       	push	r28
+    10ac:	df 93       	push	r29
+    10ae:	ec 01       	movw	r28, r24
+	if( Tcounter > 1 ){
+    10b0:	8a 81       	ldd	r24, Y+2	; 0x02
+    10b2:	82 30       	cpi	r24, 0x02	; 2
+    10b4:	48 f0       	brcs	.+18     	; 0x10c8 <_ZN3PWM9interruptEv+0x1e>
+		Tcounter--;
+    10b6:	81 50       	subi	r24, 0x01	; 1
+    10b8:	8a 83       	std	Y+2, r24	; 0x02
+		if( Tcounter == pwm )
+    10ba:	9b 81       	ldd	r25, Y+3	; 0x03
+    10bc:	89 13       	cpse	r24, r25
+    10be:	0b c0       	rjmp	.+22     	; 0x10d6 <_ZN3PWM9interruptEv+0x2c>
+			port->set();
+    10c0:	88 81       	ld	r24, Y
+    10c2:	99 81       	ldd	r25, Y+1	; 0x01
+    10c4:	a2 de       	rcall	.-700    	; 0xe0a <_ZN7Digital3setEv>
+    10c6:	07 c0       	rjmp	.+14     	; 0x10d6 <_ZN3PWM9interruptEv+0x2c>
+	}else if( Tcounter == 1 ){
+    10c8:	81 30       	cpi	r24, 0x01	; 1
+    10ca:	29 f4       	brne	.+10     	; 0x10d6 <_ZN3PWM9interruptEv+0x2c>
+		port->clear();
+    10cc:	88 81       	ld	r24, Y
+    10ce:	99 81       	ldd	r25, Y+1	; 0x01
+    10d0:	af de       	rcall	.-674    	; 0xe30 <_ZN7Digital5clearEv>
+		Tcounter = 11;
+    10d2:	8b e0       	ldi	r24, 0x0B	; 11
+    10d4:	8a 83       	std	Y+2, r24	; 0x02
+	}
+}
+    10d6:	df 91       	pop	r29
+    10d8:	cf 91       	pop	r28
+    10da:	08 95       	ret
+
+000010dc <_ZN3PWM6setPWMEh>:
+
+void PWM::setPWM(uint8_t pwm){
+    10dc:	1f 93       	push	r17
+    10de:	cf 93       	push	r28
+    10e0:	df 93       	push	r29
+    10e2:	ec 01       	movw	r28, r24
+    10e4:	16 2f       	mov	r17, r22
+	if( pwm == 0)
+    10e6:	61 11       	cpse	r22, r1
+    10e8:	01 c0       	rjmp	.+2      	; 0x10ec <_ZN3PWM6setPWMEh+0x10>
+		disable();
+    10ea:	d1 df       	rcall	.-94     	; 0x108e <_ZN3PWM7disableEv>
+	else{
+		//enable();
+	}
+	this->pwm = pwm;
+    10ec:	1b 83       	std	Y+3, r17	; 0x03
+}
+    10ee:	df 91       	pop	r29
+    10f0:	cf 91       	pop	r28
+    10f2:	1f 91       	pop	r17
+    10f4:	08 95       	ret
+
+000010f6 <_ZN3PWM6incPWMEv>:
+uint8_t PWM::getPWM(){
+	return pwm;
+}
+
+void PWM::incPWM(){
+	if(pwm < 10) pwm++;
+    10f6:	fc 01       	movw	r30, r24
+    10f8:	23 81       	ldd	r18, Z+3	; 0x03
+    10fa:	2a 30       	cpi	r18, 0x0A	; 10
+    10fc:	10 f4       	brcc	.+4      	; 0x1102 <_ZN3PWM6incPWMEv+0xc>
+    10fe:	2f 5f       	subi	r18, 0xFF	; 255
+    1100:	23 83       	std	Z+3, r18	; 0x03
+    1102:	08 95       	ret
+
+00001104 <_ZN5TimerC1EPFvvE5TMODE>:
+#include "Timer.h"
+
+// default constructor
+Timer::Timer(void (*func)(), TMODE mode)
+{
+	Timer::_funcUpd = (*func);
+    1104:	fc 01       	movw	r30, r24
+    1106:	72 83       	std	Z+2, r23	; 0x02
+    1108:	61 83       	std	Z+1, r22	; 0x01
+	Timer::Status = mode;
+    110a:	43 83       	std	Z+3, r20	; 0x03
+    110c:	08 95       	ret
+
+0000110e <_ZN5TimerC1EPFvvE>:
+}
+Timer::Timer(void (*func)())
+{
+	Timer::_funcUpd = (*func);
+    110e:	fc 01       	movw	r30, r24
+    1110:	72 83       	std	Z+2, r23	; 0x02
+    1112:	61 83       	std	Z+1, r22	; 0x01
+    1114:	08 95       	ret
+
+00001116 <_ZN5TimerD1Ev>:
+}
+Timer::Timer(){
+}
+
+// default destructor
+Timer::~Timer()
+    1116:	08 95       	ret
+
+00001118 <_ZN5Timer7setTimeEh>:
+{
+} //~Timer
+
+
+void Timer::setTime(uint8_t time){
+	Ttimer = time;
+    1118:	fc 01       	movw	r30, r24
+    111a:	60 83       	st	Z, r22
+    111c:	08 95       	ret
+
+0000111e <_ZN5Timer5timerEv>:
+void Timer::setFunc(void (*func)()){
+	Timer::_funcUpd = (*func);
+}
+
+void Timer::timer()
+{
+    111e:	fc 01       	movw	r30, r24
+	if(Tcounter > 1 )Tcounter--;
+    1120:	84 81       	ldd	r24, Z+4	; 0x04
+    1122:	82 30       	cpi	r24, 0x02	; 2
+    1124:	10 f0       	brcs	.+4      	; 0x112a <_ZN5Timer5timerEv+0xc>
+    1126:	81 50       	subi	r24, 0x01	; 1
+    1128:	84 83       	std	Z+4, r24	; 0x04
+	if(testbit(Status, 0) && Tcounter == 0) Tcounter = Ttimer;
+    112a:	83 81       	ldd	r24, Z+3	; 0x03
+    112c:	80 ff       	sbrs	r24, 0
+    112e:	05 c0       	rjmp	.+10     	; 0x113a <_ZN5Timer5timerEv+0x1c>
+    1130:	84 81       	ldd	r24, Z+4	; 0x04
+    1132:	81 11       	cpse	r24, r1
+    1134:	02 c0       	rjmp	.+4      	; 0x113a <_ZN5Timer5timerEv+0x1c>
+    1136:	80 81       	ld	r24, Z
+    1138:	84 83       	std	Z+4, r24	; 0x04
+    113a:	08 95       	ret
+
+0000113c <_ZN5Timer6updateEv>:
+}
+
+void Timer::update()
+{
+    113c:	fc 01       	movw	r30, r24
+	if( Tcounter == 1 ){
+    113e:	84 81       	ldd	r24, Z+4	; 0x04
+    1140:	81 30       	cpi	r24, 0x01	; 1
+    1142:	69 f4       	brne	.+26     	; 0x115e <_ZN5Timer6updateEv+0x22>
+{
+	if(Tcounter > 1 )Tcounter--;
+	if(testbit(Status, 0) && Tcounter == 0) Tcounter = Ttimer;
+}
+
+void Timer::update()
+    1144:	83 81       	ldd	r24, Z+3	; 0x03
+    1146:	83 70       	andi	r24, 0x03	; 3
+{
+	if( Tcounter == 1 ){
+		if( testbit(Status, 0) && testbit(Status, 1) ) Tcounter = Ttimer;
+    1148:	83 30       	cpi	r24, 0x03	; 3
+    114a:	11 f4       	brne	.+4      	; 0x1150 <_ZN5Timer6updateEv+0x14>
+    114c:	80 81       	ld	r24, Z
+    114e:	84 83       	std	Z+4, r24	; 0x04
+		Tcounter--;
+    1150:	84 81       	ldd	r24, Z+4	; 0x04
+    1152:	81 50       	subi	r24, 0x01	; 1
+    1154:	84 83       	std	Z+4, r24	; 0x04
+		_funcUpd();
+    1156:	01 80       	ldd	r0, Z+1	; 0x01
+    1158:	f2 81       	ldd	r31, Z+2	; 0x02
+    115a:	e0 2d       	mov	r30, r0
+    115c:	09 95       	icall
+    115e:	08 95       	ret
+
+00001160 <_ZN5Timer6enableEv>:
+	}
+} //Timer
+
+void Timer::enable(){
+    1160:	fc 01       	movw	r30, r24
+	setbit(Status, 0);
+    1162:	83 81       	ldd	r24, Z+3	; 0x03
+    1164:	98 2f       	mov	r25, r24
+    1166:	91 60       	ori	r25, 0x01	; 1
+    1168:	93 83       	std	Z+3, r25	; 0x03
+	if( !testbit(Status, 1) ) Tcounter = Ttimer;
+    116a:	81 fd       	sbrc	r24, 1
+    116c:	02 c0       	rjmp	.+4      	; 0x1172 <_ZN5Timer6enableEv+0x12>
+    116e:	80 81       	ld	r24, Z
+    1170:	84 83       	std	Z+4, r24	; 0x04
+    1172:	08 95       	ret
+
+00001174 <_Z9UART_initm>:
+ *  Author: Renan
+ */ 
+
+#include "UART.h"
+
+void UART_init( unsigned long BAUD ){
+    1174:	9b 01       	movw	r18, r22
+    1176:	ac 01       	movw	r20, r24
+	unsigned long ubrr;
+	
+	UCSRA = 0x02;
+    1178:	82 e0       	ldi	r24, 0x02	; 2
+    117a:	8b b9       	out	0x0b, r24	; 11
+	UCSRB = (1<<TXEN) | (1<<RXEN);
+    117c:	88 e1       	ldi	r24, 0x18	; 24
+    117e:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = (3<<UCSZ0);
+    1180:	86 e0       	ldi	r24, 0x06	; 6
+    1182:	80 bd       	out	0x20, r24	; 32
+	
+	ubrr = ((F_CPU/8)/BAUD)-1;
+    1184:	60 e4       	ldi	r22, 0x40	; 64
+    1186:	72 e4       	ldi	r23, 0x42	; 66
+    1188:	8f e0       	ldi	r24, 0x0F	; 15
+    118a:	90 e0       	ldi	r25, 0x00	; 0
+    118c:	50 d0       	rcall	.+160    	; 0x122e <__udivmodsi4>
+    118e:	da 01       	movw	r26, r20
+    1190:	c9 01       	movw	r24, r18
+    1192:	01 97       	sbiw	r24, 0x01	; 1
+    1194:	a1 09       	sbc	r26, r1
+    1196:	b1 09       	sbc	r27, r1
+	UBRRH = (unsigned char) (ubrr>>8);
+    1198:	49 2f       	mov	r20, r25
+    119a:	5a 2f       	mov	r21, r26
+    119c:	6b 2f       	mov	r22, r27
+    119e:	77 27       	eor	r23, r23
+    11a0:	40 bd       	out	0x20, r20	; 32
+	UBRRL = (unsigned char) (ubrr);
+    11a2:	89 b9       	out	0x09, r24	; 9
+    11a4:	08 95       	ret
+
+000011a6 <_Z10UART_Writeh>:
+}
+
+void UART_Write( unsigned char Data ){
+	while( !(UCSRA & (1<<UDRE)) );
+    11a6:	5d 9b       	sbis	0x0b, 5	; 11
+    11a8:	fe cf       	rjmp	.-4      	; 0x11a6 <_Z10UART_Writeh>
+	UDR = Data;
+    11aa:	8c b9       	out	0x0c, r24	; 12
+    11ac:	08 95       	ret
+
+000011ae <_Z10UART_PrintPKc>:
+}
+
+void UART_Print( const char str[] ){
+    11ae:	cf 93       	push	r28
+    11b0:	df 93       	push	r29
+    11b2:	ec 01       	movw	r28, r24
+	while( *str != 0 ){
+    11b4:	88 81       	ld	r24, Y
+    11b6:	88 23       	and	r24, r24
+    11b8:	29 f0       	breq	.+10     	; 0x11c4 <_Z10UART_PrintPKc+0x16>
+void UART_Write( unsigned char Data ){
+	while( !(UCSRA & (1<<UDRE)) );
+	UDR = Data;
+}
+
+void UART_Print( const char str[] ){
+    11ba:	21 96       	adiw	r28, 0x01	; 1
+	while( *str != 0 ){
+		UART_Write(*str);
+    11bc:	f4 df       	rcall	.-24     	; 0x11a6 <_Z10UART_Writeh>
+	while( !(UCSRA & (1<<UDRE)) );
+	UDR = Data;
+}
+
+void UART_Print( const char str[] ){
+	while( *str != 0 ){
+    11be:	89 91       	ld	r24, Y+
+    11c0:	81 11       	cpse	r24, r1
+    11c2:	fc cf       	rjmp	.-8      	; 0x11bc <_Z10UART_PrintPKc+0xe>
+		UART_Write(*str);
+		str++;
+	}
+}
+    11c4:	df 91       	pop	r29
+    11c6:	cf 91       	pop	r28
+    11c8:	08 95       	ret
+
+000011ca <_Z9UART_Readv>:
+
+unsigned char UART_Read( ){
+	if( UCSRA & (1<<RXC)){
+    11ca:	5f 9b       	sbis	0x0b, 7	; 11
+    11cc:	02 c0       	rjmp	.+4      	; 0x11d2 <_Z9UART_Readv+0x8>
+		return UDR;
+    11ce:	8c b1       	in	r24, 0x0c	; 12
+    11d0:	08 95       	ret
+	}
+	return 0;
+    11d2:	80 e0       	ldi	r24, 0x00	; 0
+}
+    11d4:	08 95       	ret
+
+000011d6 <_Z16UART_DataIsReadyv>:
+
+char UART_DataIsReady( ){
+	if( UCSRA & (1<<RXC) ) return 1;
+    11d6:	8b b1       	in	r24, 0x0b	; 11
+	return 0;
+}
+    11d8:	88 1f       	adc	r24, r24
+    11da:	88 27       	eor	r24, r24
+    11dc:	88 1f       	adc	r24, r24
+    11de:	08 95       	ret
+
+000011e0 <__udivmodhi4>:
+    11e0:	aa 1b       	sub	r26, r26
+    11e2:	bb 1b       	sub	r27, r27
+    11e4:	51 e1       	ldi	r21, 0x11	; 17
+    11e6:	07 c0       	rjmp	.+14     	; 0x11f6 <__udivmodhi4_ep>
+
+000011e8 <__udivmodhi4_loop>:
+    11e8:	aa 1f       	adc	r26, r26
+    11ea:	bb 1f       	adc	r27, r27
+    11ec:	a6 17       	cp	r26, r22
+    11ee:	b7 07       	cpc	r27, r23
+    11f0:	10 f0       	brcs	.+4      	; 0x11f6 <__udivmodhi4_ep>
+    11f2:	a6 1b       	sub	r26, r22
+    11f4:	b7 0b       	sbc	r27, r23
+
+000011f6 <__udivmodhi4_ep>:
+    11f6:	88 1f       	adc	r24, r24
+    11f8:	99 1f       	adc	r25, r25
+    11fa:	5a 95       	dec	r21
+    11fc:	a9 f7       	brne	.-22     	; 0x11e8 <__udivmodhi4_loop>
+    11fe:	80 95       	com	r24
+    1200:	90 95       	com	r25
+    1202:	bc 01       	movw	r22, r24
+    1204:	cd 01       	movw	r24, r26
+    1206:	08 95       	ret
+
+00001208 <__divmodhi4>:
+    1208:	97 fb       	bst	r25, 7
+    120a:	07 2e       	mov	r0, r23
+    120c:	16 f4       	brtc	.+4      	; 0x1212 <__divmodhi4+0xa>
+    120e:	00 94       	com	r0
+    1210:	06 d0       	rcall	.+12     	; 0x121e <__divmodhi4_neg1>
+    1212:	77 fd       	sbrc	r23, 7
+    1214:	08 d0       	rcall	.+16     	; 0x1226 <__divmodhi4_neg2>
+    1216:	e4 df       	rcall	.-56     	; 0x11e0 <__udivmodhi4>
+    1218:	07 fc       	sbrc	r0, 7
+    121a:	05 d0       	rcall	.+10     	; 0x1226 <__divmodhi4_neg2>
+    121c:	3e f4       	brtc	.+14     	; 0x122c <__divmodhi4_exit>
+
+0000121e <__divmodhi4_neg1>:
+    121e:	90 95       	com	r25
+    1220:	81 95       	neg	r24
+    1222:	9f 4f       	sbci	r25, 0xFF	; 255
+    1224:	08 95       	ret
+
+00001226 <__divmodhi4_neg2>:
+    1226:	70 95       	com	r23
+    1228:	61 95       	neg	r22
+    122a:	7f 4f       	sbci	r23, 0xFF	; 255
+
+0000122c <__divmodhi4_exit>:
+    122c:	08 95       	ret
+
+0000122e <__udivmodsi4>:
+    122e:	a1 e2       	ldi	r26, 0x21	; 33
+    1230:	1a 2e       	mov	r1, r26
+    1232:	aa 1b       	sub	r26, r26
+    1234:	bb 1b       	sub	r27, r27
+    1236:	fd 01       	movw	r30, r26
+    1238:	0d c0       	rjmp	.+26     	; 0x1254 <__udivmodsi4_ep>
+
+0000123a <__udivmodsi4_loop>:
+    123a:	aa 1f       	adc	r26, r26
+    123c:	bb 1f       	adc	r27, r27
+    123e:	ee 1f       	adc	r30, r30
+    1240:	ff 1f       	adc	r31, r31
+    1242:	a2 17       	cp	r26, r18
+    1244:	b3 07       	cpc	r27, r19
+    1246:	e4 07       	cpc	r30, r20
+    1248:	f5 07       	cpc	r31, r21
+    124a:	20 f0       	brcs	.+8      	; 0x1254 <__udivmodsi4_ep>
+    124c:	a2 1b       	sub	r26, r18
+    124e:	b3 0b       	sbc	r27, r19
+    1250:	e4 0b       	sbc	r30, r20
+    1252:	f5 0b       	sbc	r31, r21
+
+00001254 <__udivmodsi4_ep>:
+    1254:	66 1f       	adc	r22, r22
+    1256:	77 1f       	adc	r23, r23
+    1258:	88 1f       	adc	r24, r24
+    125a:	99 1f       	adc	r25, r25
+    125c:	1a 94       	dec	r1
+    125e:	69 f7       	brne	.-38     	; 0x123a <__udivmodsi4_loop>
+    1260:	60 95       	com	r22
+    1262:	70 95       	com	r23
+    1264:	80 95       	com	r24
+    1266:	90 95       	com	r25
+    1268:	9b 01       	movw	r18, r22
+    126a:	ac 01       	movw	r20, r24
+    126c:	bd 01       	movw	r22, r26
+    126e:	cf 01       	movw	r24, r30
+    1270:	08 95       	ret
+
+00001272 <__divmodsi4>:
+    1272:	05 2e       	mov	r0, r21
+    1274:	97 fb       	bst	r25, 7
+    1276:	16 f4       	brtc	.+4      	; 0x127c <__divmodsi4+0xa>
+    1278:	00 94       	com	r0
+    127a:	06 d0       	rcall	.+12     	; 0x1288 <__divmodsi4_neg1>
+    127c:	57 fd       	sbrc	r21, 7
+    127e:	0c d0       	rcall	.+24     	; 0x1298 <__divmodsi4_neg2>
+    1280:	d6 df       	rcall	.-84     	; 0x122e <__udivmodsi4>
+    1282:	07 fc       	sbrc	r0, 7
+    1284:	09 d0       	rcall	.+18     	; 0x1298 <__divmodsi4_neg2>
+    1286:	7e f4       	brtc	.+30     	; 0x12a6 <__divmodsi4_exit>
+
+00001288 <__divmodsi4_neg1>:
+    1288:	90 95       	com	r25
+    128a:	80 95       	com	r24
+    128c:	70 95       	com	r23
+    128e:	61 95       	neg	r22
+    1290:	7f 4f       	sbci	r23, 0xFF	; 255
+    1292:	8f 4f       	sbci	r24, 0xFF	; 255
+    1294:	9f 4f       	sbci	r25, 0xFF	; 255
+    1296:	08 95       	ret
+
+00001298 <__divmodsi4_neg2>:
+    1298:	50 95       	com	r21
+    129a:	40 95       	com	r20
+    129c:	30 95       	com	r19
+    129e:	21 95       	neg	r18
+    12a0:	3f 4f       	sbci	r19, 0xFF	; 255
+    12a2:	4f 4f       	sbci	r20, 0xFF	; 255
+    12a4:	5f 4f       	sbci	r21, 0xFF	; 255
+
+000012a6 <__divmodsi4_exit>:
+    12a6:	08 95       	ret
+
+000012a8 <__umulhisi3>:
+    12a8:	a2 9f       	mul	r26, r18
+    12aa:	b0 01       	movw	r22, r0
+    12ac:	b3 9f       	mul	r27, r19
+    12ae:	c0 01       	movw	r24, r0
+    12b0:	a3 9f       	mul	r26, r19
+    12b2:	01 d0       	rcall	.+2      	; 0x12b6 <__umulhisi3+0xe>
+    12b4:	b2 9f       	mul	r27, r18
+    12b6:	70 0d       	add	r23, r0
+    12b8:	81 1d       	adc	r24, r1
+    12ba:	11 24       	eor	r1, r1
+    12bc:	91 1d       	adc	r25, r1
+    12be:	08 95       	ret
+
+000012c0 <__usmulhisi3>:
+    12c0:	f3 df       	rcall	.-26     	; 0x12a8 <__umulhisi3>
+
+000012c2 <__usmulhisi3_tail>:
+    12c2:	b7 ff       	sbrs	r27, 7
+    12c4:	08 95       	ret
+    12c6:	82 1b       	sub	r24, r18
+    12c8:	93 0b       	sbc	r25, r19
+    12ca:	08 95       	ret
+
+000012cc <__muluhisi3>:
+    12cc:	ed df       	rcall	.-38     	; 0x12a8 <__umulhisi3>
+    12ce:	a5 9f       	mul	r26, r21
+    12d0:	90 0d       	add	r25, r0
+    12d2:	b4 9f       	mul	r27, r20
+    12d4:	90 0d       	add	r25, r0
+    12d6:	a4 9f       	mul	r26, r20
+    12d8:	80 0d       	add	r24, r0
+    12da:	91 1d       	adc	r25, r1
+    12dc:	11 24       	eor	r1, r1
+    12de:	08 95       	ret
+
+000012e0 <__tablejump2__>:
+    12e0:	ee 0f       	add	r30, r30
+    12e2:	ff 1f       	adc	r31, r31
+
+000012e4 <__tablejump__>:
+    12e4:	05 90       	lpm	r0, Z+
+    12e6:	f4 91       	lpm	r31, Z
+    12e8:	e0 2d       	mov	r30, r0
+    12ea:	09 94       	ijmp
+
+000012ec <__do_global_dtors>:
+    12ec:	10 e0       	ldi	r17, 0x00	; 0
+    12ee:	c8 e2       	ldi	r28, 0x28	; 40
+    12f0:	d0 e0       	ldi	r29, 0x00	; 0
+    12f2:	03 c0       	rjmp	.+6      	; 0x12fa <__do_global_dtors+0xe>
+    12f4:	fe 01       	movw	r30, r28
+    12f6:	f6 df       	rcall	.-20     	; 0x12e4 <__tablejump__>
+    12f8:	22 96       	adiw	r28, 0x02	; 2
+    12fa:	ca 32       	cpi	r28, 0x2A	; 42
+    12fc:	d1 07       	cpc	r29, r17
+    12fe:	d1 f7       	brne	.-12     	; 0x12f4 <__do_global_dtors+0x8>
+    1300:	f8 94       	cli
+
+00001302 <__stop_program>:
+    1302:	ff cf       	rjmp	.-2      	; 0x1302 <__stop_program>
