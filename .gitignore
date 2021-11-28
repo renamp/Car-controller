@@ -22,3 +22,21 @@ fp-info-cache
 ##########################################
 # Ignore PDF
 *.pdf
+
+# Image
+Thumbs.db
+
+
+##########################################
+# Compilation files
+*.o
+*.d
+*.lss
+*.map
+*.srec
+
+# output files
+*.hex
+*.elf
+*.eep
+
